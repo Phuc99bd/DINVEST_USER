@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Card, Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { FormattedMessage, injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { get } from "lodash";
-
+import FormReview from "../components/FormReview";
+import EarnNow from "../components/EarnNow";
+import RefLink from "../components/RefLink";
 import { ROUTE , PRODUCTION } from "commons/constants";
 import "./styles.scss";
 
 const DashboardPage = ({ history, location }) => {
-    return <div className="network-content">
-            
+    return <div className="network-content mt-20">
+            <div className="network-review">
+                <FormReview label={"text"} value={50} ></FormReview>
+                <FormReview label={"text"} value={50} ></FormReview>
+                <FormReview label={"text"} value={50} ></FormReview>
+            </div>
+            <div className="network-review">
+                <FormReview label={"text"} value={50} ></FormReview>
+                <FormReview label={"text"} value={50} ></FormReview>
+                <FormReview label={"text"} value={50} ></FormReview>
+
+            </div>
+            <div className="menu-ref-earn">
+                <EarnNow value={20}></EarnNow>
+                <RefLink sponsorKey={"DKAWDWA"}></RefLink>
+            </div>
         </div>
 }   
 

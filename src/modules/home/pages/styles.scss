@@ -1,6 +1,120 @@
+@import "assets/css/variables.scss";
 
 .network-content{
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
-    height: 100%;
+    height: 100%;   
+    .network-review{
+        display: flex;   
+        width: 100%;
+        .review-item{
+            flex: 1;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            margin: 15px;
+            padding: 10px;
+            border-radius: 7px;
+            position: relative;
+            background: $header-background;
+            opacity: 0.9;
+            .item-body{
+                flex: 2;
+                text-align: right;
+                .item-text{
+                    font-size: 20px;
+                }
+            }
+            .item-img{
+                margin: auto;
+            }
+        }
+    }
+
+    .menu-ref-earn{
+        display: flex;
+        width: 100%;
+        .earn-network{
+            margin: 15px;
+            padding: 10px;
+            display: flex;
+            height: 70px;
+            width: 50%;
+            background: $header-background;
+            opacity: 0.9;
+            justify-content: space-between;
+            border-radius: 7px;
+            .value-com{
+                flex: 2;
+                text-align: right;
+                margin: auto;
+            }
+        }
+        .ref-menu{
+            margin: 15px;
+            padding: 10px;
+            display: flex;
+            width: 50%;
+            background: $header-background;
+            opacity: 0.9;
+            justify-content: space-between;
+            border-radius: 7px;
+            flex-direction: column;
+            .ref-link{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin: 10px;
+                .ref-header{
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                    span:nth-child(1){
+                        flex: 2;
+                    }
+                    span:nth-child(2){
+                        margin: auto; 
+                        margin-right: 15px;   
+                    }
+                }
+                .ref-input{
+                    display: flex;
+                    background:#550143 !important;
+                    border-radius: 6px;
+                    margin-right: 15px;
+                    input {
+                        font-size: 14px;
+                        flex: 2;
+                        border: none;
+                        padding: 7px;
+                        background: none !important;
+                    }
+                    span{
+                        padding: 8px;   
+                        margin: auto;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .network-review , .menu-ref-earn{
+        flex-direction: column;
+    }
+    .review-item ,
+    .earn-network , 
+    .ref-menu {
+        width: 95% !important;
+        margin: 7px !important;
+    }
+    .network-content{
+        margin-top: 5px !important;
+    }
 }

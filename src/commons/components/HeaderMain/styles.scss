@@ -1,0 +1,48 @@
+@import "assets/css/variables";
+
+.header-container.ant-layout-header {
+  background: $header-background !important;
+  line-height: 70px !important;
+  height: 70px !important;
+  padding: 0 20px !important;
+  opacity: 0.9;
+  .title-header{
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    float: left;
+    span {
+      color: white;
+    }
+  }
+
+  .logo-header{
+    display: flex;
+    color: white;
+    font-size: 24px;
+    justify-content: space-between;
+    align-items: center;
+    .col-right{
+      display: flex;
+      float: right;
+    }
+    .ant-dropdown-link{
+      .styleName{
+        padding: 0 10px;
+      }
+      .image-avatar{
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+
+}
+@media only screen and (max-width: 998px) {
+  .title-header {
+    display: none !important;
+  }
+}

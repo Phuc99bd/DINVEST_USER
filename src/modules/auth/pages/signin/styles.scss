@@ -1,0 +1,138 @@
+@import "assets/css/variables.scss";
+
+.sign-in-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url("../../../../assets/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-color: $aside-menu-background;
+  flex-direction: column;
+  align-items: center;
+  .sign-in-box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    .card-login-custom {
+      border-color: $modal-background-color;
+      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.03);
+      background-color: $modal-background-color;
+      background: linear-gradient(
+        to top right,
+        $gradient-ping-color,
+        $gradient-violet-color
+      );
+      .ant-card-head {
+        text-align: center;
+        font-size: 16px;
+        border-bottom: none;
+      }
+      .ant-card-body {
+        padding: 10px 24px;
+      }
+    }
+    .action {
+      margin-top: 16px;
+    }
+    .link-custom {
+      cursor: pointer;
+      color: #40a9ff;
+    }
+    .ant-card {
+      border-radius: 6px;
+    }
+    .input-field-label {
+      margin-bottom: 5px;
+      display: block;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: lighter;
+      span {
+        color: white;
+      }
+    }
+    .input-field {
+      font-size: 16px;
+    }
+    .ant-form-item {
+      margin-bottom: 10px;
+    }
+    .action {
+      width: 100%;
+    }
+    .ant-card-head-title {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  .support-hotline {
+    color: #ffffff;
+    a {
+      color: #ffffff;
+    }
+    p {
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+  .primary-button {
+    margin-top: 10px;
+    background-color: $modal-background-color;
+    background-image: linear-gradient(
+      to right,
+      $gradient-btn-ping-color,
+      $gradient-btn-violet-color 90%
+    ) !important;
+    border-radius: 4px;
+    border-color: #ffffff;
+    border-width: 1px;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .forgot-button {
+    color: #ffffff;
+    font-size: 20px;
+    padding: 0px;
+    float: left;
+    margin-left: -1px;
+  }
+  .sign-up-link {
+    color: #ffffff;
+    font-size: 20px;
+    padding: 0px;
+    margin-right: -1px;
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .sign-in-container {
+    .sign-in-box-container {
+      max-width: 425px;
+    }
+  }
+}
+
+.box-production {
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.03);
+  background-color: #140024;
+  border-color: #140024;
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 6px;
+  width: auto;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+  }
+}

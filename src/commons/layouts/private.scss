@@ -1,0 +1,31 @@
+@import "assets/css/variables";
+
+.private-layout-container {
+  min-height: 100vh;
+  .content-layout {
+    height: 100%;
+  }
+  
+}
+
+.ant-layout,.ant-drawer-wrapper-body{
+  background-image: url("../../assets/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-color: $aside-menu-background;
+}
+
+@media (min-width: 767px) {
+  .content-layout {
+    padding: 20px 35px 35px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 830px) {
+  .content-layout {
+    padding: 20px;
+    margin: 0;
+  }
+}

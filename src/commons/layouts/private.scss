@@ -29,3 +29,19 @@
     margin: 0;
   }
 }
+
+.ant-modal-title, .ant-modal-close-x{
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.icon-confirm{
+  color: rgb(27, 160, 23) !important;
+}
+
+.btn-confirm-tran{
+   background: $btn-background-confirm !important;
+   color: white !important;
+   border-radius: 7px !important;
+   margin: auto !important;
+}

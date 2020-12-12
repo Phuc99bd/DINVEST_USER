@@ -11,7 +11,8 @@ export const ROUTE = {
     SETTING_SECURITY: "/security",
     SETTING_PERSONAL: "/personal",
     WALLET: "/wallets",
-    PACKAGE: "/packages"
+    PACKAGE: "/packages",
+    INVEST: "/invest"
 }
 export const USER_INFO_KEY = "userInfo";
 export const LANGUAGE = "lang";

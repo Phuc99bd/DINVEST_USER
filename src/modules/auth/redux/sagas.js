@@ -20,6 +20,8 @@ export const setSession = (token, redirectCallback = () => null) => {
 };
 
 
+// viet function call api
+// sau khi call api xog dua vào response gọi function bên file actions
 
 export default function* rootSaga() {
   yield all([

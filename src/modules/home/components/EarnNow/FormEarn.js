@@ -47,7 +47,8 @@ const FormEarn = ({ isVisible , onConfirm, amount }) =>{
              <InputNumber class="w-100pc" placeholder={"Please enter !"} />
             </Form.Item>
             <SelectOption onClickOption={onSelectAmount} />
-            <div className="t-center">
+            <hr></hr>
+            <div className="t-center form-submit">
                     <Button htmlType="submit" className="btn-confirm-tran">
                         <FormattedMessage id="dashboard.button.confirm" /> <CheckOutlined className="icon-confirm"/>
                     </Button>

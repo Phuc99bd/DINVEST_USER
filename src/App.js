@@ -15,6 +15,7 @@ import {
 } from "commons/constants";
 import { PrivateLayout, PublicLayout } from "commons/layouts";
 import { DashboardPage } from "modules/home";
+import { InvestPage } from "modules/invest";
 
 // import { getProfile } from "modules/profile/redux/actions";
 
@@ -114,11 +115,8 @@ const App = () => {
         <Router>
           <PublicRoute exact path={ROUTE.LOGIN} component={SignInPage} />
           <PublicRoute exact path={ROUTE.SIGNUP} component={SignUpPage} />
-          <PrivateRoute
-            exact
-            path={ROUTE.DASHBOARD}
-            component={DashboardPage}
-          />       
+          <PrivateRoute exact path={ROUTE.DASHBOARD} component={DashboardPage}  />       
+          <PrivateRoute exact path={ROUTE.INVEST} component={InvestPage}  />       
           </Router>
         {/* <AlertVerifyTransactionModal /> */}
         {/* <AuthyModal /> */}

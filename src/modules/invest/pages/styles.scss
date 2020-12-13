@@ -1,0 +1,69 @@
+@import "assets/css/variables.scss";
+
+
+.invest{
+    width: 70%;
+    padding: 20px;
+    font-family: $base-font;
+    margin: auto;
+    margin-top: 5%;
+    .invest-top{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .parent{
+            background-color: $header-background;
+            width: 49%;
+            padding: 20px 20px;
+            .parent-top{
+                padding: 10px 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .top-left{
+                    width: 50%;
+                    
+                }
+                    
+                .top-right{
+                    width: 50%;
+                    text-align: right;
+                    
+                    span:first-child{
+                        display: block;
+                    }
+
+                    span:last-child{
+
+                    }
+                }
+            }
+            .parent-bottom{
+                text-align: center;
+                .button-packages{
+                    cursor: pointer;
+                    background: $btn-background-confirm;
+                    border: none;
+                    padding: 5px 10px;
+                    :first-child{
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .invest-bottom{
+        
+    }
+}
+// .ant-modal-footer{
+//     visibility: hidden;
+// }
+// .ant-modal-centered .ant-modal{
+//     height: 80%;
+//     width: 100%;
+// }
+// .ant-modal-content,.ant-modal-mask{
+//     background-color: $background-modal !important;
+//     height: 100%;
+// }

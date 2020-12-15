@@ -9,29 +9,9 @@
         label{
             width: 100% !important;
             color: white !important;
-            font-size: 16px;
+            font-size: 14px;
             padding: 10px;
             padding-left: 0px;
-        }
-        .option-menu{
-            display: flex;
-            flex-direction: row-reverse;
-            button{
-                margin: 0 10px 15px 10px;
-                padding: 0 5px;
-            }
-            button:nth-child(1){
-                order: 4;
-            }
-            button:nth-child(2){
-                order: 3;
-            }
-            button:nth-child(3){
-                order: 2;
-            }
-            button:nth-child(4){
-                order: 1;
-            }
         }
     }
 }

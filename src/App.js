@@ -16,6 +16,7 @@ import {
 import { PrivateLayout, PublicLayout } from "commons/layouts";
 import { DashboardPage } from "modules/home";
 import { InvestPage } from "modules/invest";
+import { WalletPage } from "modules/wallets";
 
 // import { getProfile } from "modules/profile/redux/actions";
 
@@ -117,10 +118,9 @@ const App = () => {
           <PublicRoute exact path={ROUTE.SIGNUP} component={SignUpPage} />
           <PrivateRoute exact path={ROUTE.DASHBOARD} component={DashboardPage}  />       
           <PrivateRoute exact path={ROUTE.INVEST} component={InvestPage}  />       
+          <PrivateRoute exact path={ROUTE.WALLETS} component={WalletPage}  />       
           </Router>
-        {/* <AlertVerifyTransactionModal /> */}
-        {/* <AuthyModal /> */}
-        {/* <AlertVerifySponsorModal /> */}
+   
       </IntlProvider>
     </div>
   );

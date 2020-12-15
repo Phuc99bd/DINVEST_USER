@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FormattedMessage, injectIntl } from "react-intl";
 import ModalConfirm from "commons/components/ModalConfirm/index";
 import FormEarn from "./FormEarn";
-import { intl } from "helpers/reactInil";
 
 const EarnNow = ({ value }) =>{
     const [showModal , setShowModal] = useState(false);
@@ -11,7 +10,7 @@ const EarnNow = ({ value }) =>{
         setShowModal(true);
     }
     return <> <div className="earn-network" >
-        <a class="item-icon" onClick={onClick}>
+        <a class="item-icon" onClick={onClick} href="#">
           <img src={require("assets/images/loading/loader.svg")} width={50} height={50} />
           <span className="ml-10"> Earn Now </span>
         </a>

@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { intl } from "helpers/reactInil";
 import { useDispatch } from "react-redux";
 import { CheckOutlined } from "@ant-design/icons";
-import SelectOption from "./SelectOption";
+import SelectOption from "commons/components/SelectOption/SelectOption";
 import "./styles.scss";
 
 const FormEarn = ({ isVisible , onConfirm, amount }) =>{

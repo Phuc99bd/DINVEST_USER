@@ -10,6 +10,7 @@ import * as Cookies from "js-cookie";
 import "./private.scss";
 import { DashboardPage } from "modules/home";
 import { InvestPage } from "modules/invest";
+import { WalletPage } from "modules/wallets";
 import MainSideBar from "commons/components/MainHeader/index";
 import HeaderMain from "commons/components/HeaderMain/index";
 
@@ -98,7 +99,8 @@ const PrivateLayout = () => {
           <Switch>
           <Route exact path={ROUTE.DASHBOARD} component={DashboardPage} />
           <Route exact path={ROUTE.INVEST} component={InvestPage}  />       
-
+          <Route exact path={ROUTE.WALLETS} component={WalletPage}  />       
+          
           </Switch>
         </div>
       </Layout>

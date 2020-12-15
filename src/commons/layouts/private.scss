@@ -48,3 +48,61 @@
 .form-submit{
   margin-top: 10px !important;
 }
+.option-menu{
+  display: flex;
+  flex-direction: row-reverse;
+  button{
+      margin: 0 10px 15px 10px;
+      padding: 0 5px;
+  }
+  button:nth-child(1){
+      order: 4;
+  }
+  button:nth-child(2){
+      order: 3;
+  }
+  button:nth-child(3){
+      order: 2;
+  }
+  button:nth-child(4){
+      order: 1;
+  }
+}
+
+.ant-form{
+  p{
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px !important;
+  }
+}
+
+.ant-drawer-body{
+  background: $header-background !important;
+}
+
+.ant-card-head {
+  min-height: 48px;
+  margin-bottom: -1px;
+  padding: 0 24px;
+  color: rgba(0,0,0,.85);
+  font-weight: 500;
+  font-size: 16px;
+  background: transparent;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 2px 2px 0 0;
+}
+
+.ant-table , .ant-table-thead , .ant-table-content , .ant-drawer-header{
+  color: white !important;
+  background: none !important;
+}
+.ant-table-thead > tr > th{
+  background: none !important;
+  color: white !important;
+}
+
+.ant-drawer-title{
+  color: white !important;
+  font-size: 18px !important;
+}

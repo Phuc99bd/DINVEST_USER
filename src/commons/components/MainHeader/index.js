@@ -61,6 +61,13 @@ const MainSideBar = ({
       title: <FormattedMessage id={"menu.invest"} />,
       link: ROUTE.INVEST,
       subMenu: [],
+    },
+    {
+      id: 4,
+      icon: require("assets/images/loading/loader.svg"),
+      title: <FormattedMessage id={"menu.networks"} />,
+      link: ROUTE.NETWORKS + ROUTE.NETWORKS_GENERAL,
+      subMenu: [],
     }
   ];
 

@@ -1,12 +1,12 @@
 import { DownCircleTwoTone, UpCircleTwoTone } from "@ant-design/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const Wallet = ({ wallet , setWallet , setShowDeposit , setShowWithdraw , setShowExchange, setShowSwap , setDrawer })=>{
-
     const onClick = (type)=>
     {
-        setWallet(wallet);
+        setWallet(wallet || null);
         switch(type){
             case "deposit":
                   setShowDeposit(true)
@@ -23,13 +23,14 @@ const Wallet = ({ wallet , setWallet , setShowDeposit , setShowWithdraw , setSho
             case "history":
             setDrawer(true);
             break;
+            default:
         }
     }
 
 
     return <div className="wallet-menu">
         <div className="wallet-data">
-            <a href="#" className="wallet-history" onClick={()=>onClick("history")}>
+            <Link href="#" className="wallet-history" onClick={()=>onClick("history")}>
                 <div>
                   <img src={require("assets/images/loading/loader.svg")} width={40} height={40} />
                 </div>
@@ -37,17 +38,17 @@ const Wallet = ({ wallet , setWallet , setShowDeposit , setShowWithdraw , setSho
                     <span>{wallet.title}</span>
                     <span>History</span>
                 </div>
-            </a>
+            </Link>
             <div>
                {wallet.amount}
             </div>
         </div>
         <hr></hr>
         <div className="wallet-action">
-            <a href="#deposit" onClick={()=>onClick("deposit")}> <DownCircleTwoTone /> Deposit  </a>
-            { wallet.is_swap  ? <a href="#" onClick={()=>onClick("swap")}> <DownCircleTwoTone /> Swap </a> : "" } 
-            { wallet.is_exchange  ? <a href="#" onClick={()=>onClick("exchange")}> <DownCircleTwoTone /> Get more {wallet.title} </a> : "" } 
-            <a href="#" onClick={()=>onClick("withdraw")}>  <UpCircleTwoTone /> Withdraw </a>
+            <Link href="#deposit" onClick={()=>onClick("deposit")}> <DownCircleTwoTone /> Deposit  </Link>
+            { wallet.is_swap  ? <Link href="#" onClick={()=>onClick("swap")}> <DownCircleTwoTone /> Swap </Link> : "" } 
+            { wallet.is_exchange  ? <Link href="#" onClick={()=>onClick("exchange")}> <DownCircleTwoTone /> Get more {wallet.title} </Link> : "" } 
+            <Link href="#" onClick={()=>onClick("withdraw")}>  <UpCircleTwoTone /> Withdraw </Link>
         </div>
     </div>
 }

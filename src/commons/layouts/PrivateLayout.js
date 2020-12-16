@@ -11,6 +11,7 @@ import "./private.scss";
 import { DashboardPage } from "modules/home";
 import { InvestPage } from "modules/invest";
 import { WalletPage } from "modules/wallets";
+import { NetworkPage } from "modules/networks";
 import MainSideBar from "commons/components/MainHeader/index";
 import HeaderMain from "commons/components/HeaderMain/index";
 
@@ -100,6 +101,7 @@ const PrivateLayout = () => {
           <Route exact path={ROUTE.DASHBOARD} component={DashboardPage} />
           <Route exact path={ROUTE.INVEST} component={InvestPage}  />       
           <Route exact path={ROUTE.WALLETS} component={WalletPage}  />       
+          <Route path={ROUTE.NETWORKS} component={NetworkPage}  />       
           
           </Switch>
         </div>

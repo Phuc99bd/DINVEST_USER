@@ -12,7 +12,11 @@ export const ROUTE = {
     SETTING_PERSONAL: "/personal",
     WALLET: "/wallets",
     PACKAGE: "/packages",
-    INVEST: "/invest"
+    INVEST: "/invest",
+    NETWORKS_GENERAL: "/general",
+    NETWORKS_REFERALS: "/referals",
+    NETWORK_REVENUE: "/revenue"
+
 }
 export const USER_INFO_KEY = "userInfo";
 export const LANGUAGE = "lang";

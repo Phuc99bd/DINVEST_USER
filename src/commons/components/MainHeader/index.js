@@ -68,7 +68,7 @@ const MainSideBar = ({
       title: <FormattedMessage id={"menu.networks"} />,
       link: ROUTE.NETWORKS + ROUTE.NETWORKS_GENERAL,
       subMenu: [],
-    }
+    },
   ];
 
   const renderMenu = (showContent) => {
@@ -79,9 +79,8 @@ const MainSideBar = ({
             <Link to={ROUTE.HOME}>
               <img
                 style={{ padding: "5px" }}
-                src={require("assets/images/loading/loader.svg") }
+                src={require("assets/images/loading/loader.svg")}
                 alt="logo"
-                alt="pools"
               />
             </Link>
           </center>
@@ -108,7 +107,12 @@ const MainSideBar = ({
                     <div>
                       {ele.icon && (
                         <div className="icon-menu">
-                          <img src={ele.icon} alt={ele.link} width={70} height={70} />
+                          <img
+                            src={ele.icon}
+                            alt={ele.link}
+                            width={50}
+                            height={50}
+                          />
                         </div>
                       )}
                       {ele.title && (

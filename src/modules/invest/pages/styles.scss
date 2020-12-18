@@ -1,11 +1,11 @@
 @import "assets/css/variables.scss";
 
 .invest {
-  width: 70%;
+  width: 100%;
   padding: 20px;
   font-family: $base-font;
   margin: auto;
-  margin-top: 5%;
+  //   margin-top: 5%;
   .invest-top {
     width: 100%;
     display: flex;
@@ -161,6 +161,18 @@
     .cost-upgrade.parent {
       .item-cost {
         width: 95%;
+        .top {
+          padding: 0px 10px;
+          .top-right {
+            p:nth-child(3) {
+              font-size: 12px;
+            }
+          }
+        }
+        .bottom {
+          padding: 5px 10px;
+          padding-bottom: 0;
+        }
       }
     }
   }

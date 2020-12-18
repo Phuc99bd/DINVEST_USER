@@ -1,0 +1,54 @@
+@import "assets/css/variables";
+
+.networks-main {
+  height: 100%;
+  max-width: 1500px;
+  margin: auto;
+}
+.networks-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .networks-header {
+    width: 100%;
+    padding: 5px;
+    .ant-col {
+      .nav-item {
+        width: 100%;
+        margin: 20px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .networks-content {
+    height: 100%;
+    padding: 5px;
+  }
+}
+
+// General
+.general-main {
+  background: $header-background;
+  width: 100%;
+  opacity: 0.9;
+  margin: 10px;
+  margin-top: 0px;
+  padding: 20px;
+  height: 100%;
+  border-radius: 7px;
+}
+
+@media only screen and (max-width: 768px) {
+  .networks-header .ant-col {
+    .nav-item {
+      margin: 5px 0px !important;
+    }
+  }
+  .box-btn {
+    margin: 0px !important;
+  }
+  .general-main {
+    margin: 0px;
+  }
+}

@@ -5,10 +5,10 @@
   .content-layout {
     height: 100%;
   }
-  
 }
 
-.ant-layout,.ant-drawer-wrapper-body{
+.ant-layout,
+.ant-drawer-wrapper-body {
   background-image: url("../../assets/images/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,54 +30,55 @@
   }
 }
 
-.ant-modal-title, .ant-modal-close-x{
+.ant-modal-title,
+.ant-modal-close-x {
   color: white !important;
   font-size: 20px !important;
 }
 
-.icon-confirm{
+.icon-confirm {
   color: rgb(27, 160, 23) !important;
 }
 
-.btn-confirm-tran{
-   background: $btn-background-confirm !important;
-   color: white !important;
-   border-radius: 7px !important;
-   margin: auto !important;
+.btn-confirm-tran {
+  background: $btn-background-confirm !important;
+  color: white !important;
+  border-radius: 7px !important;
+  margin: auto !important;
 }
-.form-submit{
+.form-submit {
   margin-top: 10px !important;
 }
-.option-menu{
+.option-menu {
   display: flex;
   flex-direction: row-reverse;
-  button{
-      margin: 0 10px 15px 10px;
-      padding: 0 5px;
+  button {
+    margin: 0 10px 15px 10px;
+    padding: 0 5px;
   }
-  button:nth-child(1){
-      order: 4;
+  button:nth-child(1) {
+    order: 4;
   }
-  button:nth-child(2){
-      order: 3;
+  button:nth-child(2) {
+    order: 3;
   }
-  button:nth-child(3){
-      order: 2;
+  button:nth-child(3) {
+    order: 2;
   }
-  button:nth-child(4){
-      order: 1;
+  button:nth-child(4) {
+    order: 1;
   }
 }
 
-.ant-form{
-  p{
+.ant-form {
+  p {
     color: white;
     font-size: 14px;
     margin-bottom: 5px !important;
   }
 }
 
-.ant-drawer-body{
+.ant-drawer-body {
   background: $header-background !important;
 }
 
@@ -85,7 +86,7 @@
   min-height: 48px;
   margin-bottom: -1px;
   padding: 0 24px;
-  color: rgba(0,0,0,.85);
+  color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
   font-size: 16px;
   background: transparent;
@@ -93,16 +94,40 @@
   border-radius: 2px 2px 0 0;
 }
 
-.ant-table , .ant-table-thead , .ant-table-content , .ant-drawer-header{
+.ant-table,
+.ant-table-thead,
+.ant-table-content,
+.ant-drawer-header {
   color: white !important;
   background: none !important;
 }
-.ant-table-thead > tr > th{
+.ant-table-thead > tr > th {
   background: none !important;
   color: white !important;
 }
 
-.ant-drawer-title{
+.ant-drawer-title {
   color: white !important;
   font-size: 18px !important;
+}
+
+.btn-nav-link {
+  width: 100%;
+  border: none !important;
+  color: white !important;
+  background: none !important;
+  span {
+    font-size: 18px;
+  }
+}
+.btn-active {
+  background: $header-background !important;
+}
+.box-btn {
+  background: $btn-background-confirm;
+  border: 1px rgb(73, 69, 69) !important;
+  height: 32px !important;
+  padding: 7px 5px;
+  margin: 10px;
+  border-radius: 7px;
 }

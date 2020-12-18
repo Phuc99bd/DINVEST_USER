@@ -1,0 +1,22 @@
+@import "assets/css/variables";
+
+.ant-col {
+  .form-item {
+    display: flex;
+    background: $btn-background-confirm;
+    justify-content: space-between;
+    margin: 10px;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: center;
+  }
+  .item-content {
+    flex: 2;
+    display: flex;
+    margin: auto;
+    span {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

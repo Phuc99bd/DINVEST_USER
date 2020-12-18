@@ -1,130 +1,167 @@
 @import "assets/css/variables.scss";
 
-
-.invest{
-    width: 70%;
-    padding: 20px;
-    font-family: $base-font;
-    margin: auto;
-    margin-top: 5%;
-    .invest-top{
+.invest {
+  width: 70%;
+  padding: 20px;
+  font-family: $base-font;
+  margin: auto;
+  margin-top: 5%;
+  .invest-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .parent {
+      background-color: $header-background;
+      opacity: 0.95;
+      width: 49%;
+      padding: 20px 20px;
+      .parent-top {
+        padding: 10px 0;
         width: 100%;
         display: flex;
         justify-content: space-between;
-        .parent{
-            background-color: $header-background;
-            opacity: 0.95;
-            width: 49%;
-            padding: 20px 20px;
-            .parent-top{
-                padding: 10px 0;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                .top-left{
-                    width: 50%;
-                    
-                }
-                    
-                .top-right{
-                    width: 50%;
-                    text-align: right;
-                    
-                    span:first-child{
-                        display: block;
-                    }
-
-                    span:last-child{
-
-                    }
-                }
-            }
-            .parent-bottom{
-                text-align: center;
-                .button-packages{
-                    cursor: pointer;
-                    background: $btn-background-confirm;
-                    border: none;
-                    padding: 5px 10px;
-                    :first-child{
-                        margin-right: 5px;
-                    }
-                }
-            }
-
+        .top-left {
+          width: 50%;
         }
-        
+
+        .top-right {
+          width: 50%;
+          text-align: right;
+
+          span:first-child {
+            display: block;
+          }
+
+          span:last-child {
+          }
+        }
+      }
+      .parent-bottom {
+        text-align: center;
+        .button-packages {
+          cursor: pointer;
+          background: $btn-background-confirm;
+          border: none;
+          padding: 5px 10px;
+          :first-child {
+            margin-right: 5px;
+          }
+        }
+      }
     }
-                //view Buy
-            .cost-upgrade.parent{
-                width: 100%;
-                display: flex;
-                cursor: inherit;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                .item-cost{
-                    width: 32%;
-                    background: $header-background;
-                    padding: 10px 0px;
-                    padding-bottom: 5px;
-                    margin-bottom: 20px;
-                    .top{
-                        padding: 0px 10px;
-                        display: flex;
-                        width: 100%;
-                        justify-content: space-between;
-                        align-items: center;
-                        
-                        .top-left{
-                            align-items: center;
-                            
-                        }
-                        .top-right{
-                            text-align: right;
-                            p{
-                                line-height: 15px;
-                            }
-                            p:nth-child(1){
-                               font-size: 18px;
-                            }
-                            p:nth-child(2){
-                               font-size: 24px;
-                            }
-                            p:nth-child(3){
-                               font-size: 14px;
-                            }
-                        }
-                    }
-                    .bottom{
-                        padding: 5px 10px;
-                        border-top: 1px solid white;
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-                        font-size: 14px;
-                    }
-                }
-                .item-cost.top{
-                    
-                }
-            }
-                
-    .invest-bottom{
+  }
+  //view Buy
+  .cost-upgrade.parent {
+    width: 100%;
+    display: flex;
+    cursor: inherit;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .item-cost {
+      width: 32%;
+      background: $header-background;
+      padding: 10px 0px;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      .top {
+        padding: 5px 20px;
+        padding-bottom: 0px;
+        display: flex;
         width: 100%;
-        margin-top: 20px;
-        background-color: $header-background;
-        border-radius: 5px;
-        border: 1px solid white;
-        padding-top: 10px;
-        .top{
-            border-bottom: 1px solid white;
-            padding-bottom: 10px;
-            padding-left: 20px;
+        justify-content: space-between;
+        align-items: center;
+
+        .top-left {
+          align-items: center;
         }
-        .bottom{
-            height: 100%;
-            padding: 0 20px;
-            padding-top: 10px;
+        .top-right {
+          text-align: right;
+          p {
+            line-height: 15px;
+          }
+          p:nth-child(1) {
+            font-size: 18px;
+          }
+          p:nth-child(2) {
+            font-size: 24px;
+          }
+          p:nth-child(3) {
+            font-size: 14px;
+          }
         }
+      }
+      .bottom {
+        padding: 5px 20px;
+        padding-bottom: 0px;
+        border-top: 1px solid white;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
     }
+    .item-cost.top {
+    }
+  }
+
+  .invest-bottom {
+    width: 100%;
+    margin-top: 20px;
+    background-color: $header-background;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding-top: 10px;
+    .top {
+      border-bottom: 1px solid white;
+      padding-bottom: 10px;
+      padding-left: 20px;
+    }
+    .bottom {
+      height: 100%;
+      padding: 0 20px;
+      padding-top: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 1130px) {
+  .invest {
+    .cost-upgrade.parent {
+      .item-cost {
+        .top {
+          padding: 0px 10px;
+          .top-right {
+            p:nth-child(1) {
+              font-size: 14px;
+            }
+            p:nth-child(2) {
+              font-size: 18px;
+            }
+          }
+        }
+        .bottom {
+          padding: 0px 5px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .invest {
+    .cost-upgrade.parent {
+      .item-cost {
+        .bottom {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .invest {
+    .cost-upgrade.parent {
+      .item-cost {
+        width: 95%;
+      }
+    }
+  }
 }

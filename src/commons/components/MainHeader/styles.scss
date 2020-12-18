@@ -10,7 +10,7 @@
       background: none;
       border: none;
       width: 100%;
-      min-height: 118px !important;
+      padding: 10px !important;
     }
     .ant-drawer-body {
       padding: 0px 0px 140px 0px;
@@ -82,10 +82,8 @@ a {
 .ant-menu-vertical-left .ant-menu-submenu-title,
 .ant-menu-vertical-right .ant-menu-submenu-title,
 .ant-menu-inline .ant-menu-submenu-title {
-  height: 110px !important;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  padding: 0 16px;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   line-height: 40px;
   text-overflow: ellipsis;
@@ -100,7 +98,18 @@ a {
 }
 .showLogo {
   img {
-    width: 75%;
-    height: 75%;
+    width: 60%;
+    height: 60%;
   }
+}
+.menu-item-custom {
+  height: 100% !important;
+  padding: 10px !important;
+}
+.ant-menu-inline .ant-menu-item,
+.ant-menu-inline .ant-menu-submenu-title {
+  width: none !important;
+}
+.ant-menu-inline {
+  border: none !important;
 }

@@ -9,6 +9,7 @@
   .invest-top {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     .parent {
       background-color: $header-background;
@@ -158,9 +159,19 @@
 }
 @media only screen and (max-width: 768px) {
   .invest {
+    .invest-top {
+      .parent {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .parent:nth-child(2) {
+        margin-bottom: 0px;
+      }
+    }
     .cost-upgrade.parent {
       .item-cost {
         width: 95%;
+
         .top {
           padding: 0px 10px;
           .top-right {

@@ -131,3 +131,29 @@
   margin: 10px;
   border-radius: 7px;
 }
+.ant-table-row-level-0:hover > td {
+  background: none !important;
+}
+
+.ant-table-thead {
+  display: none;
+}
+
+.ant-pagination-prev,
+.ant-pagination-item,
+.ant-pagination-next {
+  span {
+    color: black !important;
+    svg path {
+      font-size: 14px !important;
+    }
+  }
+  a {
+    color: black !important;
+    font-size: 14px;
+  }
+}
+
+.ant-table-tbody > tr.ant-table-placeholder:hover > td {
+  background: none !important;
+}

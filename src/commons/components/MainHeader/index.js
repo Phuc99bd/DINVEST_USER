@@ -8,6 +8,13 @@ import { ROUTE } from "commons/constants";
 import "./styles.scss";
 
 import { FormattedMessage, injectIntl } from "react-intl";
+import {
+  DashboardOutlined,
+  DingdingOutlined,
+  DribbbleOutlined,
+  MoneyCollectOutlined,
+  WalletOutlined,
+} from "@ant-design/icons";
 
 const { Sider } = Layout;
 const rootSubMenuKeys = ["_myTransaction"];
@@ -43,32 +50,32 @@ const MainSideBar = ({
   const itemMenu = [
     {
       id: 1,
-      icon: require("assets/images/loading/loader.svg"),
+      icon: <DashboardOutlined />,
       title: <FormattedMessage id={"menu.dashboard"} />,
       link: ROUTE.HOME,
       subMenu: [],
     },
     {
       id: 2,
-      icon: require("assets/images/loading/loader.svg"),
+      icon: <WalletOutlined />,
       title: <FormattedMessage id={"menu.wallets"} />,
       link: ROUTE.WALLETS,
       subMenu: [],
     },
     {
       id: 3,
-      icon: require("assets/images/loading/loader.svg"),
+      icon: <MoneyCollectOutlined />,
       title: <FormattedMessage id={"menu.invest"} />,
       link: ROUTE.INVEST,
       subMenu: [],
     },
     {
       id: 4,
-      icon: require("assets/images/loading/loader.svg"),
+      icon: <DribbbleOutlined />,
       title: <FormattedMessage id={"menu.networks"} />,
       link: ROUTE.NETWORKS + ROUTE.NETWORKS_GENERAL,
       subMenu: [],
-    }
+    },
   ];
 
   const renderMenu = (showContent) => {
@@ -77,12 +84,7 @@ const MainSideBar = ({
         <div className="showLogo">
           <center>
             <Link to={ROUTE.HOME}>
-              <img
-                style={{ padding: "5px" }}
-                src={require("assets/images/loading/loader.svg") }
-                alt="logo"
-                alt="pools"
-              />
+              <DingdingOutlined className="logo-main" />
             </Link>
           </center>
         </div>
@@ -106,11 +108,7 @@ const MainSideBar = ({
                 <Link className="link-sidebar" to={ele.link}>
                   {!showContent && (
                     <div>
-                      {ele.icon && (
-                        <div className="icon-menu">
-                          <img src={ele.icon} alt={ele.link} width={70} height={70} />
-                        </div>
-                      )}
+                      {ele.icon && <div className="icon-menu">{ele.icon}</div>}
                       {ele.title && (
                         <div className="menu-text">{ele.title}</div>
                       )}

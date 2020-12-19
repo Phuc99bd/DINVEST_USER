@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 import "antd/dist/antd.css";
 import configureStore from "./redux/configureStore";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import "assets/css/global.scss";
+import "./assets/css/global.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 const initialState = {};
@@ -23,7 +23,7 @@ const renderApp = () =>
   );
 
 if (process.env.NODE_ENV !== "production" && module.hot) {
-    module.hot.accept("./App", renderApp);
+  module.hot.accept("./App", renderApp);
 }
 
 renderApp();

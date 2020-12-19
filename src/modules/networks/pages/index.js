@@ -6,6 +6,7 @@ import { injectIntl } from "react-intl";
 import ButtonNav from "commons/components/ButtonNav/index";
 import "./styles.scss";
 import GeneralPage from "./GeneralPage/index";
+import Referals from "./Referals/index";
 
 const NetworkPage = () => {
   const { path, url } = useRouteMatch();
@@ -55,7 +56,7 @@ const NetworkPage = () => {
                 <GeneralPage></GeneralPage>
               </Route>
               <Route exact path={`${path}${ROUTE.NETWORKS_REFERALS}`}>
-                <div>b</div>
+                <Referals></Referals>
               </Route>
               <Route exact path={`${path}${ROUTE.NETWORK_REVENUE}`}>
                 <div>c</div>

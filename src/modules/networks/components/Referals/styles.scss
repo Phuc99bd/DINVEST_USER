@@ -1,0 +1,91 @@
+@import "assets/css/variables";
+
+.referal-main {
+  background: $header-background;
+  width: 100%;
+  opacity: 0.9;
+  margin: 10px;
+  margin-top: 0px;
+  padding: 20px;
+  height: 100%;
+  border-radius: 7px;
+  .ref-active {
+    display: none !important;
+  }
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.ref-component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  .your-ref {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+.inline-ref {
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 20px;
+  border-left: 1px solid #d9d9d9;
+  bottom: 24px;
+  left: 20px;
+  z-index: -1;
+}
+.ref-current {
+  width: 300px;
+  padding: 5px 10px;
+  background: $btn-background-confirm;
+  margin: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  position: relative;
+  z-index: auto;
+  .open-ref {
+    display: flex;
+    justify-content: space-between;
+    span {
+      span {
+        padding: 0 10px;
+      }
+    }
+  }
+  .inline-horizontal::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    border-top: 1px solid #d9d9d9;
+    top: 50%;
+    left: -6%;
+    z-index: -1;
+  }
+}
+
+.referal-main > .ref-component > .ref-current > .inline-horizontal:after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  bottom: 25px;
+  left: 0 !important;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 768px) {
+  .referal-main {
+    margin: 0px;
+    padding: 10px;
+  }
+}

@@ -27,6 +27,24 @@ const ItemRef = ({ item, count, onGetdata }) => {
     onGetdata();
   };
   let marginLeft = count + 1 * 20;
+
+  const showData = () => {
+    return item.children ? (
+      <div
+        className={`your-ref ${!isShowRefs ? "ref-active" : ""}`}
+        style={{ "margin-left": `${marginLeft}px` }}
+      >
+        {item.children.map((e) => {
+          return (
+            <ItemRef item={e} count={count} onGetdata={onGetdata}></ItemRef>
+          );
+        })}
+      </div>
+    ) : (
+      ""
+    );
+  };
+
   return (
     <>
       {item.hashChildrent && isShowRefs ? (
@@ -34,7 +52,7 @@ const ItemRef = ({ item, count, onGetdata }) => {
       ) : (
         ""
       )}
-      <div className="ref-current" onClick={() => showRef()}>
+      <a className="ref-current" onClick={() => showRef()}>
         {count > 0 ? <span className="inline-horizontal"></span> : ""}
         <div className="open-ref">
           <span>
@@ -46,23 +64,9 @@ const ItemRef = ({ item, count, onGetdata }) => {
             <SlackOutlined className="ref-icon" />
           </span>
         </div>
-      </div>
-      {item.children ? (
-        <div
-          className={`your-ref ${!isShowRefs ? "ref-active" : ""}`}
-          style={{ "margin-left": `${marginLeft}px` }}
-        >
-          {item.children.map((e) => {
-            return (
-              <ItemRef item={e} count={count} onGetdata={onGetdata}></ItemRef>
-            );
-          })}
-        </div>
-      ) : (
-        ""
-      )}
+      </a>
+      {showData()}
     </>
   );
 };
-
 export default ItemRef;

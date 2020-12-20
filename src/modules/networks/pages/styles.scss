@@ -27,7 +27,8 @@
 }
 
 // General
-.general-main {
+.general-main,
+.revenue-main {
   background: $header-background;
   width: 100%;
   opacity: 0.9;
@@ -36,6 +37,30 @@
   padding: 20px;
   height: 100%;
   border-radius: 7px;
+}
+.revenue-header {
+  padding: 10px;
+  display: flex;
+  button.revenue-option {
+    background: $btn-background-confirm;
+    padding: 5px 40px;
+    margin-right: 20px;
+    border: 1px solid #efefef;
+  }
+}
+
+.networks-commission {
+  margin: 10px !important;
+  padding: 10px;
+  background: none !important;
+  border: 1px solid #efefef !important;
+  border-radius: 5px;
+  .ant-card-head {
+    color: white !important;
+  }
+  .ant-card-body {
+    border-top: 1px solid #efefef !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -47,7 +72,15 @@
   .box-btn {
     margin: 0px !important;
   }
-  .general-main {
+  .general-main,
+  .revenue-main {
     margin: 0px;
+  }
+  .revenue-header {
+    flex-direction: column;
+    button.revenue-option {
+      margin-right: 0px;
+      margin-bottom: 5px;
+    }
   }
 }

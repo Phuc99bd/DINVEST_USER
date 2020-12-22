@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 import { IntlProvider } from "react-intl";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
@@ -23,16 +23,12 @@ import { NetworkPage } from "modules/networks";
 
 import messages_en from "translations/en.json";
 
-import {
-  SignInPage,
-  SignUpPage,
-
-} from "modules/auth";
-
+import { SignInPage, SignUpPage } from "modules/auth";
+import { SettingsPages } from "modules/settings/Index";
 
 const LANGUAGE_DEFAUL = "en";
 const messages = {
-  en: messages_en
+  en: messages_en,
 };
 
 const languageBrowser = navigator.language.split(/[-_]/)[0];
@@ -67,11 +63,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) =>
-        // isLogin() ? (
+      render={
+        (props) => (
+          // isLogin() ? (
           <PrivateLayout {...rest}>
             <Component {...props} />
           </PrivateLayout>
+        )
         // ) : (
         //   <Redirect
         //     to={{
@@ -97,7 +95,6 @@ const App = () => {
   const hadToken = isToken();
   const dispatch = useDispatch();
 
-
   return (
     <div className="App">
       <ToastContainer />
@@ -117,13 +114,16 @@ const App = () => {
         <Router>
           <PublicRoute exact path={ROUTE.LOGIN} component={SignInPage} />
           <PublicRoute exact path={ROUTE.SIGNUP} component={SignUpPage} />
-          <PrivateRoute exact path={ROUTE.DASHBOARD} component={DashboardPage}  />       
-          <PrivateRoute exact path={ROUTE.INVEST} component={InvestPage}  />       
-          <PrivateRoute exact path={ROUTE.WALLETS} component={WalletPage}  />       
+          <PrivateRoute
+            exact
+            path={ROUTE.DASHBOARD}
+            component={DashboardPage}
+          />
+          <PrivateRoute exact path={ROUTE.INVEST} component={InvestPage} />
+          <PrivateRoute exact path={ROUTE.WALLETS} component={WalletPage} />
           <PrivateRoute path={ROUTE.NETWORKS} component={NetworkPage} />
-
-          </Router>
-   
+          <PrivateRoute path={ROUTE.SETTINGS} component={SettingsPages} />
+        </Router>
       </IntlProvider>
     </div>
   );

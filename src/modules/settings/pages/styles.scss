@@ -1,0 +1,307 @@
+@import "assets/css/variables";
+.settings-main {
+  .settings-header {
+    .settings-tabs {
+      justify-content: center;
+      :nth-child(2) {
+        margin: 0 20px;
+      }
+      .ant-col {
+        .nav-item {
+          .tab-active {
+            .button-head-settings {
+              background-color: $header-background;
+              opacity: 1;
+            }
+          }
+          .button-head-settings {
+            padding: 10px 0px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: $btn-background-confirm;
+            text-align: center;
+            * {
+              display: block;
+              margin: auto;
+            }
+            :nth-child(2) {
+              font-size: 25px;
+              line-height: 40px;
+            }
+            :nth-child(3) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .ant-row.networks-content {
+    background-color: $header-background;
+    padding: 50px 40px;
+    .ant-col {
+      .parent {
+        .user-infor {
+          display: flex;
+          color: white;
+          .avatar {
+            margin-right: 30px;
+          }
+          .right {
+            font-size: 16px;
+            align-items: center;
+            line-height: 35px;
+            h3 {
+              color: white;
+              font-size: 25px;
+            }
+            .user-link {
+              color: lightblue;
+            }
+            .user-link,
+            .user-code {
+              cursor: pointer;
+            }
+          }
+        }
+        .bottom {
+          margin-top: 20px;
+          .input-parent {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            .input-type {
+              width: 49%;
+              .title {
+                line-height: 14px;
+              }
+              .ant-input {
+                background-color: $btn-background-confirm;
+                color: white;
+                padding-top: 5px;
+                padding-bottom: 5px;
+              }
+              .ant-picker {
+                width: 100% !important;
+                background-color: $btn-background-confirm;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: 5px;
+                .ant-picker-input {
+                  input {
+                    color: white !important;
+                  }
+                }
+              }
+              .ant-dropdown-trigger.ant-dropdown-link {
+                width: 100% !important;
+                > :nth-child(1) {
+                  width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  border: 1px solid white !important;
+                  padding: 5px 10px;
+                  background-color: $btn-background-confirm;
+                  font-size: 14px;
+                  border-radius: 5px;
+                  > span:nth-child(2) {
+                    vertical-align: center;
+                  }
+                }
+              }
+              .ant-dropdown-trigger.ant-dropdown-link.ant-dropdown-open {
+                width: 100% !important;
+              }
+            }
+            .input-type.button {
+              position: relative;
+              .ant-input {
+                cursor: pointer;
+                position: absolute;
+                margin: 0;
+                top: 73%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+        }
+      }
+      .authentication.parent {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .title {
+          text-align: center;
+          font-size: 25px;
+        }
+        .left {
+          width: 49%;
+          // .title{
+          //     text-align: center;
+          //     font-size: 25px;
+          // }
+          .content {
+            .input-type {
+              margin-bottom: 30px;
+              .title {
+                text-align: left;
+                font-size: 16px;
+                line-height: 16px;
+              }
+              .ant-input-affix-wrapper.ant-input-password,
+              .ant-input {
+                background-color: $btn-background-confirm;
+                border-radius: 5px;
+              }
+              .button-save {
+                margin-top: 16px;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .right {
+          width: 49%;
+          .content {
+            .input-type {
+              .title {
+                text-align: left;
+                font-size: 16px;
+                line-height: 16px;
+              }
+              .input-email {
+                position: relative;
+                margin-top: 14px;
+                .input-change {
+                  position: absolute;
+                  width: 100%;
+                  padding: 7px 10px;
+                  background-color: $btn-background-confirm;
+                }
+                .button-change {
+                  position: absolute;
+                  right: 1%;
+                  top: 3px;
+                  cursor: pointer;
+                  width: 15%;
+                  color: white;
+                  background-color: $main-bg-input;
+                }
+              }
+            }
+          }
+        }
+      }
+      .security.parent {
+        width: 70%;
+        float: right;
+        .title {
+          font-size: 25px;
+          margin-bottom: 30px;
+        }
+        .content {
+          width: 40%;
+          display: flex;
+          justify-content: space-between;
+          .ant-btn {
+            background-color: $btn-background-confirm;
+            border: none;
+            width: 40%;
+            color: white;
+          }
+          .ant-btn.authy {
+            background-color: $main-bg-input;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .settings-main {
+    .settings-header {
+      .settings-tabs {
+        justify-content: center;
+        :nth-child(2) {
+          margin: 0 20px;
+        }
+        .ant-col {
+          .nav-item {
+            .button-head-settings {
+              :nth-child(2) {
+                font-size: 19px;
+              }
+              :nth-child(3) {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .authentication.parent {
+    .right {
+      .content {
+        .input-type {
+          .input-email {
+            .button-change {
+              width: 20% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .settings-main {
+    .settings-header {
+      margin-bottom: 30px;
+      .settings-tabs {
+        justify-content: center;
+        :nth-child(2) {
+          margin: 0 20px;
+        }
+        .ant-col {
+          margin-top: 20px;
+          .nav-item {
+            .button-head-settings {
+              :nth-child(2) {
+                font-size: 18px;
+                line-height: 40px;
+              }
+              :nth-child(3) {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .authentication.parent {
+    padding-bottom: 30px;
+    display: inline !important;
+    .left,
+    .right {
+      width: 95% !important;
+    }
+  }
+  .security.parent {
+    width: 100% !important;
+    .content {
+      display: inline !important;
+      .ant-btn {
+        width: 100% !important;
+      }
+      .ant-btn:first-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

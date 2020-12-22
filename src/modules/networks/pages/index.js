@@ -7,6 +7,7 @@ import ButtonNav from "commons/components/ButtonNav/index";
 import "./styles.scss";
 import GeneralPage from "./GeneralPage/index";
 import Referals from "./Referals/index";
+import Revenue from "./Revenue/index";
 
 const NetworkPage = () => {
   const { path, url } = useRouteMatch();
@@ -59,7 +60,7 @@ const NetworkPage = () => {
                 <Referals></Referals>
               </Route>
               <Route exact path={`${path}${ROUTE.NETWORK_REVENUE}`}>
-                <div>c</div>
+                <Revenue></Revenue>
               </Route>
             </Switch>
           </Col>

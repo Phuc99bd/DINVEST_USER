@@ -14,6 +14,7 @@ import { WalletPage } from "modules/wallets";
 import { NetworkPage } from "modules/networks";
 import MainSideBar from "commons/components/MainHeader/index";
 import HeaderMain from "commons/components/HeaderMain/index";
+import { SettingsPages } from "modules/settings/Index";
 
 const PrivateLayout = () => {
   const [openKeys, setOpenKeys] = useState([]);
@@ -79,7 +80,7 @@ const PrivateLayout = () => {
   };
   return (
     <Layout className="private-layout-container">
-     <MainSideBar
+      <MainSideBar
         showDrawer={showDrawer}
         modeMobile={modeMobile}
         setCurrentTabSidebar={setCurrentTabSidebar}
@@ -92,17 +93,17 @@ const PrivateLayout = () => {
       />
       <Layout>
         <HeaderMain
-            modeMobile={modeMobile}
-            toggleSlider={toggleSideBar}
-            visible={visible}
-          />
+          modeMobile={modeMobile}
+          toggleSlider={toggleSideBar}
+          visible={visible}
+        />
         <div className="content-layout">
           <Switch>
-          <Route exact path={ROUTE.DASHBOARD} component={DashboardPage} />
-          <Route exact path={ROUTE.INVEST} component={InvestPage}  />       
-          <Route exact path={ROUTE.WALLETS} component={WalletPage}  />       
-          <Route path={ROUTE.NETWORKS} component={NetworkPage}  />       
-          
+            <Route exact path={ROUTE.DASHBOARD} component={DashboardPage} />
+            <Route exact path={ROUTE.INVEST} component={InvestPage} />
+            <Route exact path={ROUTE.WALLETS} component={WalletPage} />
+            <Route path={ROUTE.NETWORKS} component={NetworkPage} />
+            <Route path={ROUTE.SETTINGS} component={SettingsPages} />
           </Switch>
         </div>
       </Layout>

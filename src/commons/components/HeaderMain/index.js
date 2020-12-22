@@ -15,7 +15,7 @@ const MAPPING_TITLE_WITH_ROUTE = {
   [ROUTE.POOL]: <FormattedMessage id="menu.pools" />,
   [ROUTE.WALLET]: <FormattedMessage id="menu.wallets" />,
   [ROUTE.NETWORKS]: <FormattedMessage id="menu.networks" />,
-  [ROUTE.SETTING]: <FormattedMessage id="menu.setting" />,
+  [ROUTE.SETTINGS]: <FormattedMessage id="menu.settings" />,
   [ROUTE.DASHBOARD]: <FormattedMessage id="menu.dashboard" />,
 };
 
@@ -66,9 +66,7 @@ const HeaderMain = ({ toggleSlider, visible, modeMobile }) => {
               onClick={(e) => e.preventDefault()}
             >
               <div>
-                <span className="styleName">
-                  Hi a
-                </span>
+                <span className="styleName">Hi a</span>
                 <img
                   width={40}
                   height={40}

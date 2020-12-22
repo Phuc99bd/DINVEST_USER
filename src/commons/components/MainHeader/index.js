@@ -13,6 +13,7 @@ import {
   DingdingOutlined,
   DribbbleOutlined,
   MoneyCollectOutlined,
+  SettingOutlined,
   WalletOutlined,
 } from "@ant-design/icons";
 
@@ -74,6 +75,17 @@ const MainSideBar = ({
       icon: <DribbbleOutlined />,
       title: <FormattedMessage id={"menu.networks"} />,
       link: ROUTE.NETWORKS + ROUTE.NETWORKS_GENERAL,
+      subMenu: [],
+    },
+    {
+      id: 5,
+      icon: <SettingOutlined />,
+      title: <FormattedMessage id={"menu.settings"} />,
+      link:
+        ROUTE.SETTINGS +
+        ROUTE.SETTING_PERSONAL +
+        ROUTE.SETTING_AUTHENTICATION +
+        ROUTE.SETTING_SECURITY,
       subMenu: [],
     },
   ];

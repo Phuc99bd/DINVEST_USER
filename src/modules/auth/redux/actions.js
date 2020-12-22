@@ -17,6 +17,18 @@ export const postSignup = (payload, redirect) => ({
   redirect,
 });
 
+export const getProfile = (payload, redirect) => ({
+  type: types.GET_PROFILE,
+  payload,
+  redirect,
+});
+
+export const getProfileSuccess = (payload, redirect) => ({
+  type: types.GET_PROFILE_SUCCESS,
+  payload,
+  redirect,
+});
+
 export const postActiveAccount = (payload, redirect) => ({
   type: types.ACTIVE_ACCOUNT,
   payload,

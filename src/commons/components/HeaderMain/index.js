@@ -37,6 +37,7 @@ const SubMenuAvatar = () => {
 
 const HeaderMain = ({ toggleSlider, visible, modeMobile }) => {
   const { userInfo } = useSelector((state) => state.auth);
+  console.log(userInfo);
   const { pathname } = useLocation();
   const onToggleSideBar = () => {
     toggleSlider();
@@ -66,16 +67,15 @@ const HeaderMain = ({ toggleSlider, visible, modeMobile }) => {
               onClick={(e) => e.preventDefault()}
             >
               <div>
-                <span className="styleName">Hi a</span>
+                <span className="styleName">
+                  Hi {get(userInfo, "last_name", "")}{" "}
+                  {get(userInfo, "first_name", "")}
+                </span>
                 <img
                   width={40}
                   height={40}
                   className="image-avatar"
-                  src={
-                    get(userInfo, "image", null)
-                      ? get(userInfo, "image", null)
-                      : require("assets/images/loading/loader.svg")
-                  }
+                  src={require("assets/images/loading/loader.svg")}
                   alt="logo"
                 />
               </div>

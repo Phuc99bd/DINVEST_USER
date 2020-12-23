@@ -5,11 +5,12 @@ import "./styles.scss";
 import ModalConfirm from "commons/components/ModalConfirm/index";
 import DepositModal from "../components/Wallet/DepositModal";
 import WithdrawModal from "../components/Wallet/WithdrawModal";
-import { FormattedMessage } from "react-intl";
 import ExchangeModal from "../components/Wallet/ExchangeModal";
 import SwapModal from "../components/Wallet/SwapModal";
 import DrawerHistory from "../components/DrawerHistory/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "../redux/actions";
+import { getProfile } from "modules/auth/redux/actions";
 
 const WalletPage = () => {
   const [isDepositVisible, setShowDeposit] = useState(false);
@@ -17,10 +18,19 @@ const WalletPage = () => {
   const [isWithdrawVisible, setShowWithdraw] = useState(false);
   const [isExchangeVisible, setShowExchange] = useState(false);
   const [isHistory, setShowHistory] = useState(false);
-
+  const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
   const [wallet, setWallet] = useState(null);
+
+  const onWithdraw = (currency, toAddress, amount) => {
+    dispatch(
+      actions.withdraw({ currency, toAddress, amount, network: "TRON" }, () => {
+        dispatch(getProfile({}, () => {}));
+        setShowWithdraw(false);
+      })
+    );
+  };
 
   return (
     <>
@@ -50,7 +60,12 @@ const WalletPage = () => {
           visible={isWithdrawVisible}
           setVisible={setShowWithdraw}
           title={`Withdraw ${wallet ? wallet.label : ""}`}
-          MyForm={<WithdrawModal wallet={wallet}></WithdrawModal>}
+          MyForm={
+            <WithdrawModal
+              onWithdraw={onWithdraw}
+              wallet={wallet}
+            ></WithdrawModal>
+          }
         />
         <ModalConfirm
           visible={isExchangeVisible}

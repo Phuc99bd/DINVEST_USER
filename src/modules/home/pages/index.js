@@ -8,7 +8,7 @@ import RefLink from "../components/RefLink/index";
 import "./styles.scss";
 import { useSelector } from "react-redux";
 
-const DashboardPage = ({ history, location }) => {
+const DashboardPage = ({ history }) => {
   const { userInfo } = useSelector((state) => state.auth);
 
   return (
@@ -24,7 +24,7 @@ const DashboardPage = ({ history, location }) => {
         <FormReview label={"text"} value={50}></FormReview>
       </div>
       <div className="menu-ref-earn">
-        <EarnNow userInfo={userInfo}></EarnNow>
+        <EarnNow userInfo={userInfo} history={history}></EarnNow>
         <RefLink userInfo={userInfo}></RefLink>
       </div>
     </div>

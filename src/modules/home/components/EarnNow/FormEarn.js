@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Form, InputNumber } from "antd";
 import * as numeral from "numeral";
 import { FormattedMessage } from "react-intl";
-import { intl } from "helpers/reactInil";
-import { useDispatch } from "react-redux";
 import { CheckOutlined } from "@ant-design/icons";
 import SelectOption from "commons/components/SelectOption/SelectOption";
 import "./styles.scss";
 
-const FormEarn = ({ isVisible, onConfirm, amount }) => {
-  amount = amount || 0;
-  const dispatch = useDispatch();
+const FormEarn = ({ onConfirm, amount }) => {
+  amount = +amount || 0;
   const [formCommissions] = Form.useForm();
 
   const onFinish = (values) => {
     const valueAmount = numeral(values.amount).value();
-    console.log(valueAmount);
+    if (+valueAmount < 0) {
+      return;
+    }
+    onConfirm(valueAmount);
   };
 
   useEffect(() => {

@@ -4,7 +4,6 @@ import { IntlProvider } from "react-intl";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
 
-import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
 import {
@@ -18,13 +17,15 @@ import { DashboardPage } from "modules/home";
 import { InvestPage } from "modules/invest";
 import { WalletPage } from "modules/wallets";
 import { NetworkPage } from "modules/networks";
-
-// import { getProfile } from "modules/profile/redux/actions";
+import axios from "helpers/AxiosHelper";
+import * as actions from "modules/auth/redux/actions";
 
 import messages_en from "translations/en.json";
 
 import { SignInPage, SignUpPage } from "modules/auth";
 import { SettingsPages } from "modules/settings/Index";
+import { ChromeOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 
 const LANGUAGE_DEFAUL = "en";
 const messages = {
@@ -36,9 +37,6 @@ const languageLocal = localStorage.getItem(LANGUAGE);
 
 const isLogin = () => {
   const authToken = Cookies.get(TOKEN);
-  if (authToken) {
-    // fetchHelper.addDefaultHeader("Authorization", `Bearer ${authToken}`);
-  }
   return Boolean(authToken);
 };
 
@@ -63,38 +61,42 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={
-        (props) => (
-          // isLogin() ? (
+      render={(props) =>
+        isLogin() ? (
           <PrivateLayout {...rest}>
             <Component {...props} />
           </PrivateLayout>
+        ) : (
+          <Redirect
+            to={{
+              pathname: `${ROUTE.LOGIN}`,
+              state: { from: props.location },
+            }}
+          />
         )
-        // ) : (
-        //   <Redirect
-        //     to={{
-        //       pathname: `${ROUTE.LOGIN}`,
-        //       state: { from: props.location },
-        //     }}
-        //   />
-        // )
       }
     />
   );
 };
 
-const isToken = () => {
-  const authToken = Cookies.get(TOKEN);
-  return authToken;
-};
-
 const App = () => {
   const language = languageLocal || languageBrowser;
   const [showLoading, setShowLoading] = useState(false);
-
-  const hadToken = isToken();
   const dispatch = useDispatch();
+  axios.interceptors.request.use((config) => {
+    setShowLoading(true);
+    return config;
+  });
+  axios.interceptors.response.use((config) => {
+    setTimeout(() => setShowLoading(false), 200);
+    return config;
+  });
 
+  useEffect(() => {
+    if (isLogin()) {
+      dispatch(actions.getProfile({}, () => {}));
+    }
+  }, []);
   return (
     <div className="App">
       <ToastContainer />
@@ -102,11 +104,7 @@ const App = () => {
       {showLoading && (
         <div className="loader loading">
           <span>
-            <img
-              className="image-preloader"
-              src={require("assets/images/loading/loader.svg")}
-              alt="loading"
-            />
+            <ChromeOutlined className="image-loading" />
           </span>
         </div>
       )}

@@ -28,6 +28,10 @@ export default function AuthReducer(state = initialState, action) {
         draft.dataOpenModalAuthy = payload;
         break;
       }
+      case types.GET_PROFILE_SUCCESS: {
+        draft.userInfo = payload;
+        break;
+      }
       default:
         break;
     }

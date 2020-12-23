@@ -215,6 +215,28 @@
             background-color: $main-bg-input;
           }
         }
+        .authy {
+          .input-authy {
+            width: 40%;
+            .ant-btn,
+            .ant-input {
+              width: 100%;
+              background-color: $btn-background-confirm;
+              color: white !important;
+            }
+            .ant-btn {
+              background: $main-bg-input;
+            }
+          }
+          .select-region.input-authy {
+            .ant-select.select-region,
+            .ant-select-selector {
+              color: white !important;
+              width: 100% !important;
+              background-color: $btn-background-confirm;
+            }
+          }
+        }
       }
     }
   }
@@ -270,26 +292,74 @@
           .nav-item {
             .button-head-settings {
               :nth-child(2) {
-                font-size: 18px;
+                font-size: 16px;
                 line-height: 40px;
               }
               :nth-child(3) {
-                font-size: 14px;
+                font-size: 13px;
               }
             }
           }
         }
       }
     }
-  }
-  .authentication.parent {
-    padding-bottom: 30px;
-    display: inline !important;
-    .left,
-    .right {
-      width: 95% !important;
+    .ant-row.networks-content {
+      padding: 20px 20px;
+      padding-bottom: 50px;
+      .ant-col {
+        .personal.parent {
+          .user-infor {
+            .right {
+              h3 {
+                font-size: unset;
+              }
+            }
+          }
+          .bottom {
+            .input-parent {
+              display: block !important;
+              margin-top: 0 !important;
+              .input-type {
+                width: 100%;
+                margin-top: 30px !important;
+              }
+              .input-type.button {
+                margin-top: 50px !important;
+              }
+            }
+          }
+        }
+        .authentication.parent {
+          padding-bottom: 30px;
+          display: inline !important;
+          .title {
+            font-size: 20px;
+            margin-bottom: 20px;
+          }
+          .left,
+          .right {
+            width: 100% !important;
+          }
+          .letf {
+            .content {
+              .input-type {
+                .button-save.ant-input {
+                  // margin-top: 0;
+                }
+              }
+            }
+          }
+        }
+        .security.parent {
+          .title {
+            font-size: 20px;
+            margin-bottom: 20px;
+          }
+        }
+      }
     }
   }
+
   .security.parent {
     width: 100% !important;
     .content {

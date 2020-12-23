@@ -14,6 +14,7 @@ const updateUserInfoToLocal = (userInfo) => {
 
 export default function AuthReducer(state = initialState, action) {
   const { payload } = action;
+  console.log(payload);
   return produce(state, (draft) => {
     switch (action.type) {
       case types.LOGIN_SUCCESS:
@@ -26,6 +27,10 @@ export default function AuthReducer(state = initialState, action) {
       }
       case types.TOGGLE_AUTHY_MODAL: {
         draft.dataOpenModalAuthy = payload;
+        break;
+      }
+      case types.GET_PROFILE_SUCCESS: {
+        draft.userInfo = payload;
         break;
       }
       default:

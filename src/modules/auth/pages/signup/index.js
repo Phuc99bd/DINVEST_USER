@@ -37,7 +37,7 @@ const SignUpPage = ({ history, location }) => {
     delete values.confirm_password;
     dispatch(
       actions.postSignup(values, () => {
-        // history.push(ROUTE.LOGIN);
+        history.push(ROUTE.LOGIN);
       })
     );
   };

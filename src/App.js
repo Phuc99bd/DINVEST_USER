@@ -18,7 +18,6 @@ import { InvestPage } from "modules/invest";
 import { WalletPage } from "modules/wallets";
 import { NetworkPage } from "modules/networks";
 import axios from "helpers/AxiosHelper";
-import { getProfile } from "modules/auth/redux/actions";
 import * as actions from "modules/auth/redux/actions";
 
 import messages_en from "translations/en.json";

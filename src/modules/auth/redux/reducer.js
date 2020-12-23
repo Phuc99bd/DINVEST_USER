@@ -14,7 +14,6 @@ const updateUserInfoToLocal = (userInfo) => {
 
 export default function AuthReducer(state = initialState, action) {
   const { payload } = action;
-  console.log(payload);
   return produce(state, (draft) => {
     switch (action.type) {
       case types.LOGIN_SUCCESS:

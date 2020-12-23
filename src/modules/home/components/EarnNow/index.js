@@ -3,12 +3,24 @@ import { FormattedMessage, injectIntl } from "react-intl";
 import ModalConfirm from "commons/components/ModalConfirm/index";
 import FormEarn from "./FormEarn";
 import { get } from "lodash";
+import * as actions from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import { getProfile } from "modules/auth/redux/actions";
 
 const EarnNow = ({ userInfo }) => {
   const [showModal, setShowModal] = useState(false);
-
+  const dispatch = useDispatch();
   const onClick = () => {
     setShowModal(true);
+  };
+
+  const onConfirm = (amount) => {
+    dispatch(
+      actions.withdrawEarn({ amount }, () => {
+        dispatch(getProfile({}, () => {}));
+        setShowModal(false);
+      })
+    );
   };
   return (
     <>
@@ -34,7 +46,8 @@ const EarnNow = ({ userInfo }) => {
         }
         MyForm={
           <FormEarn
-            amount={(get(userInfo, "commissions_earned", 0) || 0).toFixed(2)}
+            onConfirm={onConfirm}
+            amount={get(userInfo, "commissions_earned", 0) || 0}
           ></FormEarn>
         }
       />

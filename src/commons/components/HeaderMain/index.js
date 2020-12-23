@@ -37,7 +37,6 @@ const SubMenuAvatar = () => {
 
 const HeaderMain = ({ toggleSlider, visible, modeMobile }) => {
   const { userInfo } = useSelector((state) => state.auth);
-  console.log(userInfo);
   const { pathname } = useLocation();
   const onToggleSideBar = () => {
     toggleSlider();

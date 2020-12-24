@@ -17,3 +17,9 @@ export const getMore = (payload, redirect) => ({
   payload,
   redirect,
 });
+
+export const onVerify = (payload, redirect) => ({
+  type: types.VERIFY_TRANSACTION,
+  payload,
+  redirect,
+});

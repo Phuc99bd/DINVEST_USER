@@ -5,9 +5,8 @@ const countryTelephoneData = require("country-telephone-data");
 
 const dataNumber = () => {
   let data = countryTelephoneData.allCountries.map((value, index) => {
-    return <Option value={value.dialCode}>{value.name}</Option>;
+    return <Option value={index}>{value.iso2.codePointAt}</Option>;
   });
-  console.log(data);
   return data;
 };
 

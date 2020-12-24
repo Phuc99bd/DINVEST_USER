@@ -226,6 +226,7 @@
             }
             .ant-btn {
               background: $main-bg-input;
+              border-radius: 5px;
             }
           }
           .select-region.input-authy {
@@ -234,6 +235,7 @@
               color: white !important;
               width: 100% !important;
               background-color: $btn-background-confirm;
+              border-radius: 5px;
             }
           }
         }

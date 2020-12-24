@@ -9,7 +9,7 @@ function* onWithdraw({ payload, redirect }) {
   const { data } = yield call(requestWithdraw, payload);
   if (get(data, "status_code") === 200) {
     toast.success(data.message);
-    redirect();
+    redirect(data.data.id);
     return;
   }
 }
@@ -32,11 +32,21 @@ function* onGetMore({ payload, redirect }) {
   }
 }
 
+function* onVerify({ payload, redirect }) {
+  const { data } = yield call(requestVerifyTransaction, payload);
+  if (get(data, "status_code") === 200) {
+    toast.success(data.message);
+    redirect();
+    return;
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(types.WITHDRAW, onWithdraw),
     takeLatest(types.SWAP, onSwap),
     takeLatest(types.GET_MORE, onGetMore),
+    takeLatest(types.VERIFY_TRANSACTION, onVerify),
   ]);
 }
 
@@ -62,7 +72,17 @@ function requestSwap(payload) {
 
 function requestGetMore(payload) {
   return axios({
-    url: `${ROOT_API_URL}/wallet-trans/exchange/d-invest`,
+    url: `${ROOT_API_URL}/wallet-trans/exchange/d-vest`,
+    method: "POST",
+    data: JSON.stringify(payload),
+  }).then((data) => {
+    return data;
+  });
+}
+
+function requestVerifyTransaction(payload) {
+  return axios({
+    url: `${ROOT_API_URL}/wallet/withdraw/verify-transaction`,
     method: "POST",
     data: JSON.stringify(payload),
   }).then((data) => {

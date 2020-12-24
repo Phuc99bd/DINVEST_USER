@@ -7,6 +7,7 @@ import DepositModal from "../components/Wallet/DepositModal";
 import WithdrawModal from "../components/Wallet/WithdrawModal";
 import ExchangeModal from "../components/Wallet/ExchangeModal";
 import SwapModal from "../components/Wallet/SwapModal";
+import VerifyModal from "../components/Wallet/VerifyModal";
 import DrawerHistory from "../components/DrawerHistory/index";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../redux/actions";
@@ -18,16 +19,50 @@ const WalletPage = () => {
   const [isWithdrawVisible, setShowWithdraw] = useState(false);
   const [isExchangeVisible, setShowExchange] = useState(false);
   const [isHistory, setShowHistory] = useState(false);
+  const [isVerify, setVerify] = useState(false);
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
   const [wallet, setWallet] = useState(null);
+  const [transaction_id, setTransaction_id] = useState(null);
 
   const onWithdraw = (currency, toAddress, amount) => {
     dispatch(
-      actions.withdraw({ currency, toAddress, amount, network: "TRON" }, () => {
+      actions.withdraw(
+        { currency, toAddress, amount, network: "TRON" },
+        (id) => {
+          dispatch(getProfile({}, () => {}));
+          setShowWithdraw(false);
+          setTransaction_id(id);
+          setVerify(true);
+        }
+      )
+    );
+  };
+
+  const onExchange = (amount) => {
+    dispatch(
+      actions.getMore({ amount }, () => {
         dispatch(getProfile({}, () => {}));
-        setShowWithdraw(false);
+        setShowExchange(false);
+      })
+    );
+  };
+
+  const onSwap = (fromCurrency, amount, toCurrency) => {
+    dispatch(
+      actions.swap({ amount, fromCurrency, toCurrency }, () => {
+        dispatch(getProfile({}, () => {}));
+        setShowSwap(false);
+      })
+    );
+  };
+
+  const onVerify = (token) => {
+    dispatch(
+      actions.onVerify({ token, id: transaction_id }, () => {
+        dispatch(getProfile({}, () => {}));
+        setVerify(false);
       })
     );
   };
@@ -71,13 +106,24 @@ const WalletPage = () => {
           visible={isExchangeVisible}
           setVisible={setShowExchange}
           title={`Get more ${wallet ? wallet.label : ""}`}
-          MyForm={<ExchangeModal wallet={wallet}></ExchangeModal>}
+          MyForm={
+            <ExchangeModal
+              onExchange={onExchange}
+              wallet={wallet}
+            ></ExchangeModal>
+          }
         />
         <ModalConfirm
           visible={isSwapVisible}
           setVisible={setShowSwap}
           title={`Swap ${wallet ? wallet.label : ""}`}
-          MyForm={<SwapModal wallet={wallet}></SwapModal>}
+          MyForm={<SwapModal onSwap={onSwap} wallet={wallet}></SwapModal>}
+        />
+        <ModalConfirm
+          visible={isVerify}
+          setVisible={setVerify}
+          title={`Verify transaction ${wallet ? wallet.label : ""}`}
+          MyForm={<VerifyModal onVerify={onVerify}></VerifyModal>}
         />
       </Row>
       <Drawer

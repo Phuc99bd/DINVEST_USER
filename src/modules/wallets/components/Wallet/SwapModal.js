@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, InputNumber } from "antd";
+import { Button, Form, InputNumber, Select } from "antd";
 import { useDispatch } from "react-redux";
 import "./styles.scss";
 import { get } from "lodash";
-import { toast } from "react-toastify";
-import SelectOption from "commons/components/SelectOption/SelectOption";
 import { FormattedMessage } from "react-intl";
 import { CheckOutlined } from "@ant-design/icons";
+import * as numeral from "numeral";
 
-const SwapModal = ({ wallet }) => {
+const SwapModal = ({ wallet, onSwap }) => {
   const [formSwap] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log(values);
+    let amount = numeral(values.amount).value();
+    if (+amount < 0) return;
+    onSwap(wallet.unit, amount, values.toCurrency);
   };
   useEffect(() => {
-    formSwap.setFieldsValue({ amount: "0" });
-  }, []);
+    formSwap.setFieldsValue({ amount: "0", toCurrency: "" });
+  }, [wallet]);
 
   return (
     <Form
@@ -27,7 +28,7 @@ const SwapModal = ({ wallet }) => {
     >
       <p>Selection currency</p>
       <Form.Item
-        name="wallet_address"
+        name="toCurrency"
         rules={[
           {
             required: true,
@@ -35,11 +36,11 @@ const SwapModal = ({ wallet }) => {
           },
         ]}
       >
-        <select class="w-100pc form-control">
+        <Select class="w-100pc form-control" value={null}>
           {wallet.swap.map((e) => {
-            return <option value={e.unit}>{e.label}</option>;
+            return <option value={e.currency}>{e.label}</option>;
           })}
-        </select>
+        </Select>
       </Form.Item>
 
       <p>Amount</p>
@@ -52,7 +53,7 @@ const SwapModal = ({ wallet }) => {
           },
         ]}
       >
-        <InputNumber class="w-100pc" placeholder={"Please enter !"} />
+        <InputNumber min="0" class="w-100pc" placeholder={"Please enter !"} />
       </Form.Item>
       <hr></hr>
       <div className="t-center form-submit">

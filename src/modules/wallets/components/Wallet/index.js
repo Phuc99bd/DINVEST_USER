@@ -70,7 +70,7 @@ const Wallet = ({
         ) : (
           ""
         )}
-        {wallet.unit == "DVINEST" ? (
+        {wallet.unit == "DINVEST" ? (
           <Link href="#" onClick={() => onClick("exchange")}>
             {" "}
             <DownCircleTwoTone /> Get more {wallet.title}{" "}

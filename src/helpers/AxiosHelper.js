@@ -27,7 +27,7 @@ axios.interceptors.response.use(
   },
   (error) => {
     toast.error(JSON.stringify(error));
-    return Promise.reject(error);
+    return error;
   }
 );
 

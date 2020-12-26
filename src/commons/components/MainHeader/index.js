@@ -81,11 +81,7 @@ const MainSideBar = ({
       id: 5,
       icon: <SettingOutlined />,
       title: <FormattedMessage id={"menu.settings"} />,
-      link:
-        ROUTE.SETTINGS +
-        ROUTE.SETTING_PERSONAL +
-        ROUTE.SETTING_AUTHENTICATION +
-        ROUTE.SETTING_SECURITY,
+      link: ROUTE.SETTINGS + ROUTE.SETTING_PERSONAL,
       subMenu: [],
     },
   ];

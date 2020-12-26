@@ -5,9 +5,8 @@ const countryTelephoneData = require("country-telephone-data");
 
 const dataNumber = () => {
   let data = countryTelephoneData.allCountries.map((value, index) => {
-    return <Option value={value.dialCode}>{value.name}</Option>;
+    return <Option value={index}>{value.iso2.codePointAt}</Option>;
   });
-  console.log(data);
   return data;
 };
 
@@ -28,13 +27,7 @@ const SelectFormPhone = () => {
           .localeCompare(optionB.children.toLowerCase())
       }
     >
-      {/* <Option value="1">Not Identified</Option>
-    <Option value="2">Closed</Option>
-    <Option value="3">Communicated</Option>
-    <Option value="4">Identified</Option>
-    <Option value="5">Resolved</Option>
-    <Option value="6">Cancelled</Option> */}
-      {dataNumber}
+      {dataNumber()}
     </Select>
   );
 };

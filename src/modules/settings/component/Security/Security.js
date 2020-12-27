@@ -7,7 +7,6 @@ const Security = () => {
   const [isShowAuth, setShowAuth] = useState(false);
   const onClick = () => {
     setShowAuth(!isShowAuth);
-    // console.log(isShowAuth);
   };
   const showAuth = () => {
     if (isShowAuth == true) {
@@ -18,8 +17,10 @@ const Security = () => {
     <div className="security parent">
       <div className="title">Choose security type</div>
       <div className="content">
-        <Button className="email">Email</Button>
-        <Button className="authy" onClick={onClick}>
+        <Button className={`email ${!isShowAuth && "authy"}`} onClick={onClick}>
+          Email
+        </Button>
+        <Button className={isShowAuth && "authy"} onClick={onClick}>
           Authy
         </Button>
       </div>

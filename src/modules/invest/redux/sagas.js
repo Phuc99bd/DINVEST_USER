@@ -12,7 +12,6 @@ function* onGetCurrentInvest({ payload, redirect }) {
 
   if (get(data, "status_code") === 200) {
     yield put(actions.setCurrentInvest(data.data));
-    toast.success(data.message);
     redirect();
     return;
   }
@@ -23,7 +22,6 @@ function* onGetListInvest({ payload, redirect }) {
 
   if (get(data, "status_code") === 200) {
     yield put(actions.setListInvestment(data.data));
-    toast.success(data.message);
     return;
   }
 }

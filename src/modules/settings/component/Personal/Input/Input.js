@@ -1,11 +1,11 @@
 import { Input } from "antd";
 import React from "react";
 
-const InputUser = ({ inputTitle, value }) => {
+const InputUser = ({ inputTitle, value, name }) => {
   return (
     <div className="input-type">
       <p className="title">{inputTitle}</p>
-      <Input value={value} readOnly />
+      <Input type="text" defaultValue={value} name={name} required />
     </div>
   );
 };

@@ -1,5 +1,8 @@
 @import "assets/css/variables";
 .settings-main {
+  max-width: 1200px;
+  margin: auto;
+  opacity: 0.9;
   .settings-header {
     .settings-tabs {
       justify-content: center;
@@ -25,11 +28,11 @@
               margin: auto;
             }
             :nth-child(2) {
-              font-size: 25px;
+              font-size: 20px;
               line-height: 40px;
             }
             :nth-child(3) {
-              font-size: 14px;
+              font-size: 13px;
             }
           }
         }
@@ -75,6 +78,14 @@
               width: 49%;
               .title {
                 line-height: 14px;
+              }
+              select {
+                width: 100%;
+                background: $btn-background-confirm !important;
+                color: white;
+                padding: 7px 10px;
+                border: 1px solid white;
+                border-radius: 5px;
               }
               .ant-input {
                 background-color: $btn-background-confirm;
@@ -151,6 +162,7 @@
               .ant-input {
                 background-color: $btn-background-confirm;
                 border-radius: 5px;
+                color: white;
               }
               .button-save {
                 margin-top: 16px;
@@ -187,6 +199,7 @@
                   cursor: pointer;
                   width: 15%;
                   color: white;
+                  border: none;
                   background-color: $main-bg-input;
                 }
               }
@@ -196,12 +209,14 @@
       }
       .security.parent {
         width: 70%;
-        float: right;
+        margin: auto;
         .title {
+          text-align: center;
           font-size: 25px;
           margin-bottom: 30px;
         }
         .content {
+          margin: auto;
           width: 40%;
           display: flex;
           justify-content: space-between;
@@ -216,12 +231,13 @@
           }
         }
         .authy {
+          margin: auto;
+          width: 40%;
           .input-authy {
-            width: 40%;
+            width: 100%;
             .ant-btn,
             .ant-input {
               width: 100%;
-              background-color: $btn-background-confirm;
               color: white !important;
             }
             .ant-btn {

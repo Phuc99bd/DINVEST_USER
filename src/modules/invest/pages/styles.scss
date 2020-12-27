@@ -1,7 +1,8 @@
 @import "assets/css/variables.scss";
 
 .invest {
-  width: 70%;
+  max-width: 1100px !important;
+  margin-top: 10vh !important;
   padding: 20px;
   font-family: $base-font;
   margin: auto;
@@ -29,18 +30,22 @@
           span:first-child {
             display: block;
           }
+          span:nth-child(2) {
+            font-size: 24px;
+          }
         }
       }
       .parent-bottom {
         text-align: center;
         .button-packages {
+          border: 1px solid white !important;
           cursor: pointer;
           background: $btn-background-confirm;
-          border: none;
           padding: 5px 10px;
           :first-child {
             margin-right: 5px;
           }
+          font-size: 13px;
         }
       }
     }
@@ -176,6 +181,8 @@
 
 @media only screen and (max-width: 1024px) {
   .invest {
+    margin-top: 10vh;
+    width: 79%;
     .cost-upgrade.parent {
       .item-cost {
         .bottom {
@@ -188,11 +195,13 @@
 
 @media only screen and (max-width: 1400px) {
   .invest {
-    width: 90%;
+    margin-top: 10vh;
+    width: 79%;
   }
 }
 @media only screen and (max-width: 768px) {
   .invest {
+    margin-top: 0px !important;
     width: 100%;
     .invest-top {
       .parent {

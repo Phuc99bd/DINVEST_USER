@@ -41,12 +41,21 @@ function* onVerify({ payload, redirect }) {
   }
 }
 
+function* onTransactions({ payload, redirect }) {
+  const { data } = yield call(requestGetTransactions, payload);
+  if (get(data, "status_code") === 200) {
+    redirect(data.data);
+    return;
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(types.WITHDRAW, onWithdraw),
     takeLatest(types.SWAP, onSwap),
     takeLatest(types.GET_MORE, onGetMore),
     takeLatest(types.VERIFY_TRANSACTION, onVerify),
+    takeLatest(types.GET_TRANSACTIONS, onTransactions),
   ]);
 }
 
@@ -85,6 +94,18 @@ function requestVerifyTransaction(payload) {
     url: `${ROOT_API_URL}/wallet/withdraw/verify-transaction`,
     method: "POST",
     data: JSON.stringify(payload),
+  }).then((data) => {
+    return data;
+  });
+}
+
+function requestGetTransactions(payload) {
+  const queryParams = Object.entries(payload)
+    .map(([key, val]) => key + "=" + val)
+    .join("&");
+  return axios({
+    url: `${ROOT_API_URL}/wallet-trans/list?${queryParams}`,
+    method: "GET",
   }).then((data) => {
     return data;
   });

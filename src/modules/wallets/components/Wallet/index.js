@@ -35,9 +35,10 @@ const Wallet = ({
   };
 
   return (
-    <div className="wallet-menu">
+    <div className="wallet-menu" key={wallet?.id}>
       <div className="wallet-data">
         <Link
+          to="#"
           href="#"
           className="wallet-history"
           onClick={() => onClick("history")}
@@ -49,21 +50,21 @@ const Wallet = ({
               height={40}
             />
           </div>
-          <div class="wallet-label">
+          <div className="wallet-label">
             <span>{wallet.label}</span>
             <span>History</span>
           </div>
         </Link>
-        <div>{wallet.amount}</div>
+        <div>{wallet?.amount?.toFixed(2)}</div>
       </div>
       <hr></hr>
       <div className="wallet-action">
-        <Link href="#deposit" onClick={() => onClick("deposit")}>
+        <Link href="#deposit" onClick={() => onClick("deposit")} to="#">
           {" "}
           <DownCircleTwoTone /> Deposit{" "}
         </Link>
         {wallet.rules.is_swap ? (
-          <Link href="#" onClick={() => onClick("swap")}>
+          <Link href="#" onClick={() => onClick("swap")} to="#">
             {" "}
             <DownCircleTwoTone /> Swap{" "}
           </Link>
@@ -71,14 +72,14 @@ const Wallet = ({
           ""
         )}
         {wallet.unit == "DINVEST" ? (
-          <Link href="#" onClick={() => onClick("exchange")}>
+          <Link href="#" onClick={() => onClick("exchange")} to="#">
             {" "}
             <DownCircleTwoTone /> Get more {wallet.title}{" "}
           </Link>
         ) : (
           ""
         )}
-        <Link href="#" onClick={() => onClick("withdraw")}>
+        <Link href="#" onClick={() => onClick("withdraw")} to="#">
           {" "}
           <UpCircleTwoTone /> Withdraw{" "}
         </Link>

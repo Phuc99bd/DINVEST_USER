@@ -1,5 +1,6 @@
 export const ROOT_API_URL = process.env.REACT_APP_API;
 export const TOKEN = "token";
+export const FIND_TRANSACTION = "https://tronscan.org/#/transaction/";
 export const ROUTE = {
   HOME: "/",
   DASHBOARD: "/",

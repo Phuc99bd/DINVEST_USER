@@ -1,5 +1,5 @@
 import { Col, Drawer, Row } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Wallet from "../components/Wallet/index";
 import "./styles.scss";
 import ModalConfirm from "commons/components/ModalConfirm/index";
@@ -67,12 +67,16 @@ const WalletPage = () => {
     );
   };
 
+  useEffect(() => {
+    dispatch(getProfile({}, () => {}));
+  }, []);
+
   return (
     <>
       <Row>
         {userInfo.wallet.map((e) => {
           return (
-            <Col md={12} xs={24} className="wallet-network">
+            <Col md={12} xs={24} className="wallet-network" key={e.id}>
               <Wallet
                 wallet={e}
                 setWallet={setWallet}
@@ -134,7 +138,11 @@ const WalletPage = () => {
         visible={isHistory}
         width={"75%"}
       >
-        <DrawerHistory wallet={wallet}></DrawerHistory>
+        <DrawerHistory
+          wallet={wallet}
+          setTransaction={setTransaction_id}
+          setVerify={setVerify}
+        ></DrawerHistory>
       </Drawer>
     </>
   );

@@ -1,8 +1,8 @@
-import { ArrowUpOutlined } from "@ant-design/icons";
 import { Row, Col } from "antd";
 import { ROUTE } from "commons/constants";
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
 import { Authentication } from "../component/Authentication/Authentication";
 import Personal from "../component/Personal/Personal";
 import Security from "../component/Security/Security";
@@ -11,6 +11,8 @@ import "./styles.scss";
 
 const SettingsPages = () => {
   const { path, url } = useRouteMatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  // console.log(userInfo);
   return (
     <div className="settings-main">
       <div className="settings-header">
@@ -63,7 +65,7 @@ const SettingsPages = () => {
         <Col xl={24} lg={24} md={24} xs={24} sm={24}>
           <Switch>
             <Route exact path={`${path}${ROUTE.SETTING_PERSONAL}`}>
-              <Personal />
+              <Personal userInfo={userInfo} />
             </Route>
             <Route exact path={`${path}${ROUTE.SETTING_AUTHENTICATION}`}>
               <Authentication />

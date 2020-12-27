@@ -23,3 +23,9 @@ export const onVerify = (payload, redirect) => ({
   payload,
   redirect,
 });
+
+export const onGetTransaction = (payload, redirect) => ({
+  type: types.GET_TRANSACTIONS,
+  payload,
+  redirect,
+});

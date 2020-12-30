@@ -5,7 +5,13 @@ import * as actions from "../../redux/actions";
 import moment from "moment";
 import { FIND_TRANSACTION } from "commons/constants/index";
 
-const DrawerHistory = ({ wallet, setTransaction, setVerify }) => {
+const DrawerHistory = ({
+  wallet,
+  setTransaction,
+  setVerify,
+  setCancel,
+  is_refresh,
+}) => {
   const dispatch = useDispatch();
   let [transactions, setTransactions] = useState({ data: [] });
   let [pageIndex, setPageIndex] = useState(1);
@@ -23,7 +29,7 @@ const DrawerHistory = ({ wallet, setTransaction, setVerify }) => {
   };
   useEffect(() => {
     getTran(pageIndex);
-  }, [wallet]);
+  }, [wallet, is_refresh]);
 
   const customPagination = {
     current: pageIndex,
@@ -37,8 +43,13 @@ const DrawerHistory = ({ wallet, setTransaction, setVerify }) => {
   };
 
   const onOpenVerify = (row) => {
-    setTransaction(row.id);
+    setTransaction(row);
     setVerify(true);
+  };
+
+  const onOpenCancel = (row) => {
+    setTransaction(row);
+    setCancel(true);
   };
 
   const renderStatus = (text, row) => {
@@ -49,14 +60,15 @@ const DrawerHistory = ({ wallet, setTransaction, setVerify }) => {
         <button className="btn-transaction" onClick={() => onOpenVerify(row)}>
           Verify
         </button>
-        <button className="btn-transaction">Cancel</button>
+        <button className="btn-transaction" onClick={() => onOpenCancel(row)}>
+          Cancel
+        </button>
       </>
     ) : (
       <span className={`status-${text}`}>{text}</span>
     );
   };
 
-  console.log(transactions);
   const columns = [
     {
       title: "Hash",

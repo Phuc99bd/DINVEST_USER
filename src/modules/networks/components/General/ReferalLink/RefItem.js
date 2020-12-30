@@ -1,12 +1,17 @@
 import { CopyTwoTone, RiseOutlined } from "@ant-design/icons";
+import { get } from "lodash";
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const RefLink = ({ sponsorKey }) => {
   const onCopy = () => {
     toast.success("Copy Success! 🆗", { draggable: true });
   };
+  const { userInfo } = useSelector((state) => state.auth);
+
+  let endpoint = window.location.origin + "/signup?sponsorKey=";
 
   return (
     <div className="ref-menu">
@@ -17,9 +22,16 @@ const RefLink = ({ sponsorKey }) => {
             <RiseOutlined />
           </span>
         </div>
-        <CopyToClipboard onCopy={onCopy} text={sponsorKey}>
+        <CopyToClipboard
+          onCopy={onCopy}
+          text={`${endpoint}${get(userInfo, "sponsorKey", "")}`}
+        >
           <div className="ref-input">
-            <input type="text" value={sponsorKey} readOnly />
+            <input
+              type="text"
+              value={`${endpoint}${get(userInfo, "sponsorKey", "")}`}
+              readOnly
+            />
             <span>
               <CopyTwoTone />
             </span>
@@ -31,9 +43,16 @@ const RefLink = ({ sponsorKey }) => {
           <span>Referals code</span>
           <span></span>
         </div>
-        <CopyToClipboard onCopy={onCopy} text={sponsorKey}>
+        <CopyToClipboard
+          onCopy={onCopy}
+          text={`${get(userInfo, "sponsorKey", "")}`}
+        >
           <div className="ref-input">
-            <input type="text" value={sponsorKey} readOnly />
+            <input
+              type="text"
+              value={`${get(userInfo, "sponsorKey", "")}`}
+              readOnly
+            />
             <span>
               <CopyTwoTone />
             </span>

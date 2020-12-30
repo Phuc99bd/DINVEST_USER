@@ -23,3 +23,15 @@ export const setListInvestment = (payload, redirect) => ({
   payload,
   redirect,
 });
+
+export const onBuyInvestment = (payload, redirect) => ({
+  type: types.BUY_INVESTMENT,
+  payload,
+  redirect,
+});
+
+export const getHistoryInvestment = (payload, redirect) => ({
+  type: types.HISTORY_INVESTMENT,
+  payload,
+  redirect,
+});

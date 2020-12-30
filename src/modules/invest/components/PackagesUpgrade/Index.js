@@ -1,7 +1,9 @@
 import React from "react";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { Link, useRouteMatch } from "react-router-dom";
-const PackagesUpgrade = ({ invest, setShowList }) => {
+import { formatNumber } from "helpers/formatNumber";
+
+const PackagesUpgrade = ({ invest, investCurrent, setShowList }) => {
   const { path, url } = useRouteMatch();
   /**
    * invest exist show else null
@@ -21,14 +23,21 @@ const PackagesUpgrade = ({ invest, setShowList }) => {
           {invest ? (
             <>
               <span>{invest.title}</span>
-              <span>$ {invest.price}</span>
+              <span>
+                ${" "}
+                {formatNumber(
+                  investCurrent
+                    ? invest.price - investCurrent.price
+                    : invest.price
+                )}
+              </span>
             </>
           ) : (
-            <span>Your current package max now . Can't upgrade</span>
+            <span>Next package upgrade You're own lastest package!</span>
           )}
         </div>
       </div>
-      {invest ? (
+      {invest && invest.position != 10 ? (
         <div className="parent-bottom">
           <Link
             to={`${url}#buy`}

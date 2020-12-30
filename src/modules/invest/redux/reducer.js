@@ -2,8 +2,8 @@ import produce from "immer";
 import * as types from "./constants";
 
 const initialState = {
-  dataCurrentInvest: null,
-  listInvestment: null,
+  dataCurrentInvest: {},
+  listInvestment: [],
 };
 
 export default function InvestReducer(state = initialState, action) {

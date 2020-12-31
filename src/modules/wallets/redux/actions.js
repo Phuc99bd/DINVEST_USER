@@ -24,6 +24,12 @@ export const onVerify = (payload, redirect) => ({
   redirect,
 });
 
+export const onCancel = (payload, redirect) => ({
+  type: types.CANCEL_TRANSACTION,
+  payload,
+  redirect,
+});
+
 export const onGetTransaction = (payload, redirect) => ({
   type: types.GET_TRANSACTIONS,
   payload,

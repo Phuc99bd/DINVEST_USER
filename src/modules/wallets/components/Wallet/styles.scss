@@ -1,42 +1,48 @@
-
-.formDeposit{
-    display: flex;
+.formDeposit {
+  display: flex;
 }
-.ant-form-item-control-input-content{
-    select{
-        padding: 7px;
-    }
+.ant-form-item-control-input-content {
+  select {
+    padding: 7px;
+  }
 }
-.address-deposit{
-    display: flex;
-    background:#550143 !important;
-    border-radius: 6px;
-        input {
-            font-size: 14px;
-            flex: 2;
-            border: none;
-            padding: 7px;
-            background: none !important;
-            color: white;
-            height: 100%;
-            margin: auto;
-        }
-        input:active{
-            border: none !important; 
-        }
-        span{
-            padding: 7px;   
-            font-size: 18px;
-        }
+.address-deposit {
+  display: flex;
+  background: #550143 !important;
+  border-radius: 6px;
+  input {
+    font-size: 14px;
+    flex: 2;
+    border: none;
+    padding: 7px;
+    background: none !important;
+    color: white;
+    height: 100%;
+    margin: auto;
+  }
+  input:active {
+    border: none !important;
+  }
+  span {
+    padding: 7px;
+    font-size: 18px;
+  }
 }
 
 .canvas-qrcode {
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    canvas {
-      height: auto !important;
-      border: 5px solid #fff;
-      margin-bottom: 10px;
-    }
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  canvas {
+    height: auto !important;
+    border: 5px solid #fff;
+    margin-bottom: 10px;
   }
+}
+
+.btn-cancel-tran {
+  background: rgb(224, 122, 4) !important;
+  margin-left: 10px;
+  border: 1px solid white;
+  color: white !important;
+}

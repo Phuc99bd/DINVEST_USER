@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { ArrowUpOutlined } from "@ant-design/icons";
-import ModalConfirm from "commons/components/ModalConfirm";
-import ModalInvest from "./ModalInvest";
-const OneItem = ({ value, position, cost, classname, setShowList }) => {
-  const [showModal, setShowModal] = useState(false);
+import { formatNumber } from "helpers/formatNumber";
 
-  const onClickShow = () => {
-    setShowModal(true);
-    console.log(showModal);
-  };
+const OneItem = ({
+  value,
+  position,
+  cost,
+  classname,
+  setShowList,
+  revenue,
+  is_current,
+  is_hidden,
+  onClickShow,
+}) => {
   return (
     <div className={classname}>
       <div className="top">
@@ -21,28 +25,35 @@ const OneItem = ({ value, position, cost, classname, setShowList }) => {
         </div>
         <div className="top-right">
           <p>{position}</p>
-          <p>$ {value}</p>
-          <p>max revenue $ {value}</p>
+          <p>$ {formatNumber(value)}</p>
+          <p>max revenue $ {formatNumber(revenue)}</p>
         </div>
       </div>
       <div className="bottom">
         <div className="bottom-left" onClick={() => setShowList(false)}>
           <span>Back</span>
         </div>
-        <div className="bottom-mid" onClick={() => onClickShow()}>
-          <ArrowUpOutlined />
-          <span>Upgrade</span>
+        <div
+          className={`bottom-mid ${
+            is_hidden && !is_current ? "upgrade-hidden" : ""
+          }`}
+          onClick={() => {
+            !is_current && onClickShow();
+          }}
+        >
+          {is_current ? (
+            "current"
+          ) : (
+            <>
+              <ArrowUpOutlined />
+              <span>Upgrade</span>
+            </>
+          )}
         </div>
         <div className="bottom-right">
-          <span>{cost}</span>
+          <span>{formatNumber(cost)}$</span>
         </div>
       </div>
-      <ModalConfirm
-        visible={showModal}
-        setVisible={setShowModal}
-        title="Confirm Transaction"
-        MyForm={<ModalInvest value={"1.000.000"} position={"Leader"} />}
-      />
     </div>
   );
 };

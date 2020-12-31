@@ -49,6 +49,14 @@ function* onTransactions({ payload, redirect }) {
   }
 }
 
+function* onCancelTransaction({ payload, redirect }) {
+  const { data } = yield call(requestCancelTransaction, payload);
+  if (get(data, "status_code") === 200) {
+    redirect(data.data);
+    return;
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(types.WITHDRAW, onWithdraw),
@@ -56,6 +64,7 @@ export default function* rootSaga() {
     takeLatest(types.GET_MORE, onGetMore),
     takeLatest(types.VERIFY_TRANSACTION, onVerify),
     takeLatest(types.GET_TRANSACTIONS, onTransactions),
+    takeLatest(types.CANCEL_TRANSACTION, onCancelTransaction),
   ]);
 }
 
@@ -106,6 +115,16 @@ function requestGetTransactions(payload) {
   return axios({
     url: `${ROOT_API_URL}/wallet-trans/list?${queryParams}`,
     method: "GET",
+  }).then((data) => {
+    return data;
+  });
+}
+
+function requestCancelTransaction(payload) {
+  return axios({
+    url: `${ROOT_API_URL}/wallet/${payload.type.toLowerCase()}/cancel-transaction`,
+    method: "POST",
+    data: JSON.stringify(payload),
   }).then((data) => {
     return data;
   });

@@ -8,33 +8,38 @@ import WithdrawModal from "../components/Wallet/WithdrawModal";
 import ExchangeModal from "../components/Wallet/ExchangeModal";
 import SwapModal from "../components/Wallet/SwapModal";
 import VerifyModal from "../components/Wallet/VerifyModal";
+import CancelModal from "../components/Wallet/CancelModal";
 import DrawerHistory from "../components/DrawerHistory/index";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../redux/actions";
 import { getProfile } from "modules/auth/redux/actions";
 
 const WalletPage = () => {
-  const [isDepositVisible, setShowDeposit] = useState(false);
-  const [isSwapVisible, setShowSwap] = useState(false);
-  const [isWithdrawVisible, setShowWithdraw] = useState(false);
-  const [isExchangeVisible, setShowExchange] = useState(false);
-  const [isHistory, setShowHistory] = useState(false);
-  const [isVerify, setVerify] = useState(false);
+  const [isDepositVisible, setShowDeposit] = useState(false),
+    [isSwapVisible, setShowSwap] = useState(false),
+    [isWithdrawVisible, setShowWithdraw] = useState(false),
+    [isExchangeVisible, setShowExchange] = useState(false),
+    [isHistory, setShowHistory] = useState(false),
+    [isVerify, setVerify] = useState(false),
+    [isCancel, setCancel] = useState(false),
+    [is_refresh, setRefesh] = useState(false);
+
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
   const [wallet, setWallet] = useState(null);
-  const [transaction_id, setTransaction_id] = useState(null);
+  const [transaction, setTransaction] = useState(null);
 
   const onWithdraw = (currency, toAddress, amount) => {
     dispatch(
       actions.withdraw(
         { currency, toAddress, amount, network: "TRON" },
-        (id) => {
+        (transaction) => {
           dispatch(getProfile({}, () => {}));
           setShowWithdraw(false);
-          setTransaction_id(id);
+          setTransaction(transaction);
           setVerify(true);
+          setRefesh(!is_refresh);
         }
       )
     );
@@ -60,10 +65,23 @@ const WalletPage = () => {
 
   const onVerify = (token) => {
     dispatch(
-      actions.onVerify({ token, id: transaction_id }, () => {
+      actions.onVerify({ token, id: transaction?.id }, () => {
         dispatch(getProfile({}, () => {}));
         setVerify(false);
       })
+    );
+  };
+
+  const onCancel = () => {
+    dispatch(
+      actions.onCancel(
+        { transactionCode: transaction?.code, type: transaction?.type },
+        () => {
+          dispatch(getProfile({}, () => {}));
+          setCancel(false);
+          setRefesh(!is_refresh);
+        }
+      )
     );
   };
 
@@ -129,6 +147,18 @@ const WalletPage = () => {
           title={`Verify transaction ${wallet ? wallet.label : ""}`}
           MyForm={<VerifyModal onVerify={onVerify}></VerifyModal>}
         />
+        <ModalConfirm
+          visible={isCancel}
+          setVisible={setCancel}
+          title={`Are you sure you want to delete?`}
+          MyForm={
+            <CancelModal
+              setCancel={setCancel}
+              onCancel={onCancel}
+              id={transaction?.id}
+            ></CancelModal>
+          }
+        />
       </Row>
       <Drawer
         title={`History wallet ${wallet ? wallet.label : ""}`}
@@ -140,8 +170,10 @@ const WalletPage = () => {
       >
         <DrawerHistory
           wallet={wallet}
-          setTransaction={setTransaction_id}
+          setTransaction={setTransaction}
           setVerify={setVerify}
+          setCancel={setCancel}
+          is_refresh={is_refresh}
         ></DrawerHistory>
       </Drawer>
     </>

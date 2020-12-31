@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import { ArrowUpOutlined } from "@ant-design/icons";
-import { Link, useRouteMatch } from "react-router-dom";
+import React from "react";
+import { formatNumber } from "helpers/formatNumber";
 
-const ModalInvest = ({ value, position }) => {
+const ModalInvest = ({ product, investmentCurrent, onBuyInvestment }) => {
+  let value =
+    (investmentCurrent
+      ? product.price - investmentCurrent.price
+      : product.price) || 0;
+
   return (
     <div className="invest-modal">
       <div className="content-modal">
         <p>
-          Do you want to {position}: {value}
+          Do you want to {product?.title}: {formatNumber(value)}$
         </p>
         <img
           src={require("assets/images/loading/loader.svg")}
@@ -16,7 +20,7 @@ const ModalInvest = ({ value, position }) => {
         />
       </div>
       <div className="button-modal">
-        <div className="button border-radius-5">
+        <div className="button border-radius-5" onClick={onBuyInvestment}>
           <span>Confirm!</span>
           <img
             src={require("assets/images/loading/loader.svg")}

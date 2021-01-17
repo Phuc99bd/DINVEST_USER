@@ -35,7 +35,6 @@ function* onLogin({ payload, redirect }) {
 function* onSignup({ payload, redirect }) {
   const { data } = yield call(requestSignup, payload);
   if (get(data, "status_code") === 200) {
-    toast.success(data.message);
     redirect();
     return;
   }
@@ -44,7 +43,6 @@ function* onSignup({ payload, redirect }) {
 function* getProfile({ payload, redirect }) {
   const { data } = yield call(requestGetProfile, payload);
   if (get(data, "status_code") === 200) {
-    toast.success(data.message);
     yield put(actions.getProfileSuccess(data.data));
     return;
   }

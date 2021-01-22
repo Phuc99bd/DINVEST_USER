@@ -1,27 +1,25 @@
 import { SlackOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import * as actions from "modules/networks/redux/actions";
 
 const ItemRef = ({ item, count, onGetdata }) => {
   const [isShowRefs, setShowRefs] = useState(false);
-
+  let dispatch = useDispatch();
   const showRef = () => {
-    item.children = !item.children
-      ? [
-          {
-            id: 3,
-            full_name: "Công Phúc",
-            hashChildrent: true,
-            email: "phuccog@gmail.com",
-          },
-          {
-            id: 3,
-            full_name: "Công Phúc",
-            hashChildrent: true,
-            email: "phuccog@gmail.com",
-          },
-        ]
-      : item.children;
-    if (item.hashChildrent && item.children) {
+    if (item.hasChildrent && !item.children) {
+      dispatch(
+        actions.getRefByUser(
+          { type: "referals", customer_id: item?.id },
+          (data) => {
+            item.children = data;
+          }
+        )
+      );
+      setShowRefs(!isShowRefs);
+    }
+
+    if (item.hasChildrent && item.children) {
       setShowRefs(!isShowRefs);
     }
     onGetdata();
@@ -47,7 +45,7 @@ const ItemRef = ({ item, count, onGetdata }) => {
 
   return (
     <>
-      {item.hashChildrent && isShowRefs ? (
+      {item.hasChildrent && isShowRefs ? (
         <span className="inline-ref"></span>
       ) : (
         ""
@@ -56,7 +54,7 @@ const ItemRef = ({ item, count, onGetdata }) => {
         {count > 0 ? <span className="inline-horizontal"></span> : ""}
         <div className="open-ref">
           <span>
-            {!isShowRefs && item.hashChildrent ? "+" : "-"}
+            {!isShowRefs && item.hasChildrent ? "+" : "-"}
             <span>{item.full_name}</span>
           </span>
 

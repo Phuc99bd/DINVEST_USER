@@ -1,23 +1,44 @@
 import { Card, Col, Table } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import moment from "moment";
 
 const Revenue = () => {
-  const dataSource = [];
+  const [dataSource, setData] = useState({ data: [] });
+  let [page, setPageIndex] = useState(1);
+  let pageSize = 10;
+
+  const customPagination = {
+    current: page,
+    pageSize,
+    size: dataSource?.lastPage || 1,
+    total: dataSource?.total,
+    onChange: (page) => {
+      // dispatch(
+      //   actions.getCommission({ page }, (data) => {
+      //     setData(data);
+      //   })
+      // );
+      setPageIndex(page);
+    },
+  };
+  const dispatch = useDispatch();
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "Amount",
+      dataIndex: "value",
+      key: "value",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Created at",
+      dataIndex: "created_at",
+      key: "created_at",
+      render: (text) => moment(text).format("YYYY-MM-DD HH:mm:ss"),
     },
   ];
   const onChangeOption = (value) => {};
@@ -34,7 +55,11 @@ const Revenue = () => {
         </div>
         <div className="revenue-body">
           <Card title="Revenue" className="networks-commission">
-            <Table dataSource={dataSource} columns={columns} />
+            <Table
+              dataSource={dataSource}
+              columns={columns}
+              pagination={customPagination}
+            />
           </Card>
         </div>
       </div>

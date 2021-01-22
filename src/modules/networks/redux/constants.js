@@ -1,1 +1,3 @@
 export const GET_COMMISSIONS = "GET_COMMISSIONS";
+export const GET_REF_BY_USER = "GET_REF_BY_USER";
+export const GET_REVENUE = "GET_REVENUE";

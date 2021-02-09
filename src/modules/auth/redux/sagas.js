@@ -1,16 +1,10 @@
 import Cookies from "js-cookie";
-import { all, takeLatest, call, put, fork } from "redux-saga/effects";
+import { all, takeLatest, call, put } from "redux-saga/effects";
 import { get } from "lodash";
 import * as types from "./constants";
 import * as actions from "./actions";
 import axios from "helpers/AxiosHelper";
-import {
-  ROOT_API_URL,
-  USER_INFO_KEY,
-  TRANSACTION,
-  LOGIN,
-} from "commons/constants";
-import { toast } from "react-toastify";
+import { ROOT_API_URL, USER_INFO_KEY } from "commons/constants";
 
 export const setSession = (token, redirectCallback = () => null) => {
   process.env.NODE_ENV === "development" && Cookies.set("token", token);
@@ -20,6 +14,22 @@ export const setSession = (token, redirectCallback = () => null) => {
 function* onLogin({ payload, redirect }) {
   try {
     const { data } = yield call(requestLogin, payload);
+    if (get(data, "status_code") === 200) {
+      const user = data?.data || {};
+      if (user.email) {
+        setSession(get(data, "data.token"), redirect);
+        localStorage.setItem(USER_INFO_KEY, JSON.stringify(data.data));
+        yield put(actions.loginSuccess(data.data));
+        return;
+      }
+      redirect(user);
+    }
+  } catch (err) {}
+}
+
+function* onVerifyLogin({ payload, redirect }) {
+  try {
+    const { data } = yield call(requestVerifyLogin, payload);
     if (get(data, "status_code") === 200) {
       const user = data?.data || {};
       if (user.email) {
@@ -57,6 +67,7 @@ export default function* rootSaga() {
     takeLatest(types.LOGIN, onLogin),
     takeLatest(types.SIGN_UP, onSignup),
     takeLatest(types.GET_PROFILE, getProfile),
+    takeLatest(types.VERIFY_LOGIN, onVerifyLogin),
   ]);
 }
 
@@ -64,6 +75,17 @@ export default function* rootSaga() {
 function requestLogin(payload) {
   return axios({
     url: `${ROOT_API_URL}/login`,
+    method: "POST",
+    data: JSON.stringify(payload),
+  }).then((data) => {
+    return data;
+  });
+}
+
+// Request Api
+function requestVerifyLogin(payload) {
+  return axios({
+    url: `${ROOT_API_URL}/verify-login`,
     method: "POST",
     data: JSON.stringify(payload),
   }).then((data) => {

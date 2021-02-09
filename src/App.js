@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { IntlProvider } from "react-intl";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
@@ -6,12 +6,7 @@ import Cookies from "js-cookie";
 
 import { ToastContainer } from "react-toastify";
 
-import {
-  ROUTE,
-  LANGUAGE,
-  TOKEN,
-  CUSTOMER_LINK_INVITE_SPONSOR,
-} from "commons/constants";
+import { ROUTE, LANGUAGE, TOKEN } from "commons/constants";
 import { PrivateLayout, PublicLayout } from "commons/layouts";
 import { DashboardPage } from "modules/home";
 import { InvestPage } from "modules/invest";
@@ -23,9 +18,10 @@ import * as actions from "modules/auth/redux/actions";
 import messages_en from "translations/en.json";
 
 import { SignInPage, SignUpPage } from "modules/auth";
-import { SettingsPages } from "modules/settings/Index";
+import { SettingsPages } from "modules/settings";
 import { ChromeOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
+import NotFound from "modules/notfound";
 
 const LANGUAGE_DEFAUL = "en";
 const messages = {
@@ -121,6 +117,7 @@ const App = () => {
           <PrivateRoute exact path={ROUTE.WALLETS} component={WalletPage} />
           <PrivateRoute path={ROUTE.NETWORKS} component={NetworkPage} />
           <PrivateRoute path={ROUTE.SETTINGS} component={SettingsPages} />
+          {/* <PrivateRoute path="**" component={NotFound} /> */}
         </Router>
       </IntlProvider>
     </div>

@@ -1,30 +1,56 @@
-import { Input, Button } from "antd";
+import { Button } from "antd";
 import React from "react";
 import { Authy } from "./Authy/Authy";
 import { useState } from "react";
+import { onChangeSecurity } from "modules/settings/redux/actions";
+import ModalConfirm from "commons/components/ModalConfirm";
+import VerifyModal from "modules/wallets/components/Wallet/VerifyModal";
+import { useDispatch } from "react-redux";
 
-const Security = () => {
-  const [isShowAuth, setShowAuth] = useState(false);
-  const onClick = () => {
-    setShowAuth(!isShowAuth);
+const Security = ({ userInfo }) => {
+  const dispatch = useDispatch();
+  const [isShow, setShow] = useState(false);
+  const [status, setStatus] = useState(userInfo.is_authy);
+
+  const onVerify = (code) => {
+    dispatch(
+      onChangeSecurity({
+        code,
+        status,
+      })
+    );
+    setShow(false);
   };
-  const showAuth = () => {
-    if (isShowAuth == true) {
-      return <Authy />;
-    }
+
+  const onChangeStatus = (status) => {
+    setShow(true);
+    setStatus(status);
   };
+
   return (
     <div className="security parent">
       <div className="title">Choose security type</div>
       <div className="content">
-        <Button className={`email ${!isShowAuth && "authy"}`} onClick={onClick}>
+        <Button
+          className={`email ${!userInfo?.is_authy && "authy"}`}
+          onClick={() => onChangeStatus(0)}
+        >
           Email
         </Button>
-        <Button className={isShowAuth && "authy"} onClick={onClick}>
+        <Button
+          className={userInfo?.is_authy && "authy"}
+          onClick={() => onChangeStatus(1)}
+        >
           Authy
         </Button>
       </div>
-      {showAuth()}
+      <Authy userProfile={userInfo} />
+      <ModalConfirm
+        visible={isShow}
+        setVisible={setShow}
+        title={`Verify Authenticator`}
+        MyForm={<VerifyModal onVerify={onVerify}></VerifyModal>}
+      />
     </div>
   );
 };

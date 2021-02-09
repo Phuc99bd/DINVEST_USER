@@ -4,15 +4,17 @@ import UserInfor from "./userinfor/UserInfor";
 import { InputUser } from "./Input/Input";
 import { DatePicker, Input } from "antd";
 import moment from "moment";
+import { updateProfile } from "modules/settings/redux/actions";
+import { useDispatch } from "react-redux";
+
 const Personal = ({ userInfo }) => {
   let endpoint = window.location.origin + "/signup?sponsorKey=";
-
+  const dispatch = useDispatch();
   const dateFormat = "YYYY/MM/DD";
   const onSubmit = (event) => {
     const formData = new FormData(event.target);
     event.preventDefault();
-    for (let [key, value] of formData.entries()) {
-    }
+    dispatch(updateProfile(formData));
   };
   return (
     <div className="personal parent">
@@ -40,10 +42,7 @@ const Personal = ({ userInfo }) => {
               <p className="title">Birthday</p>
               <DatePicker
                 name="birthday"
-                defaultValue={moment(
-                  userInfo?.birthday || "1970/1/1",
-                  dateFormat
-                )}
+                value={moment(userInfo?.birthday || "1970/1/1", dateFormat)}
                 format={dateFormat}
               />
             </div>

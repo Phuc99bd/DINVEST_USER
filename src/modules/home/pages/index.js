@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { get } from "lodash";
+import { injectIntl } from "react-intl";
 import FormReview from "../components/FormReview/index";
 import EarnNow from "../components/EarnNow/index";
 import RefLink from "../components/RefLink/index";

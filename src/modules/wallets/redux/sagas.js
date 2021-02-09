@@ -9,7 +9,7 @@ function* onWithdraw({ payload, redirect }) {
   const { data } = yield call(requestWithdraw, payload);
   if (get(data, "status_code") === 200) {
     toast.success(data.message);
-    redirect(data.data.id);
+    redirect(data.data);
     return;
   }
 }

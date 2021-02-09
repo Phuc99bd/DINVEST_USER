@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { formatNumber } from "helpers/formatNumber";
 
 const PackagesUpgrade = ({ invest, investCurrent, setShowList }) => {
-  const { path, url } = useRouteMatch();
+  const { url } = useRouteMatch();
   /**
    * invest exist show else null
    * text: Max
@@ -37,7 +37,7 @@ const PackagesUpgrade = ({ invest, investCurrent, setShowList }) => {
           )}
         </div>
       </div>
-      {invest && invest.position != 10 ? (
+      {invest && invest.position !== 10 ? (
         <div className="parent-bottom">
           <Link
             to={`${url}#buy`}
@@ -45,7 +45,7 @@ const PackagesUpgrade = ({ invest, investCurrent, setShowList }) => {
             className="button-packages border-radius-5"
           >
             <ArrowUpOutlined />
-            Upgrade now
+            {investCurrent ? "Upgrade now" : "Buy now"}
           </Link>
         </div>
       ) : (

@@ -8,7 +8,7 @@ import { get } from "lodash";
 
 import { ROUTE, USER_INFO_KEY } from "commons/constants";
 import "./styles.scss";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const { Header } = Layout;
 const MAPPING_TITLE_WITH_ROUTE = {

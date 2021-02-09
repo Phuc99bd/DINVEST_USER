@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
-import {
-  ROUTE,
-  USER_INFO_KEY,
-  CUSTOMER_LINK_INVITE_SPONSOR,
-} from "commons/constants";
+import { ROUTE, USER_INFO_KEY } from "commons/constants";
 import * as Cookies from "js-cookie";
 import "./private.scss";
 import { DashboardPage } from "modules/home";
@@ -14,7 +10,8 @@ import { WalletPage } from "modules/wallets";
 import { NetworkPage } from "modules/networks";
 import MainSideBar from "commons/components/MainHeader/index";
 import HeaderMain from "commons/components/HeaderMain/index";
-import { SettingsPages } from "modules/settings/Index";
+import { SettingsPages } from "modules/settings";
+import Notfound from "modules/notfound";
 
 const PrivateLayout = () => {
   const [openKeys, setOpenKeys] = useState([]);
@@ -104,6 +101,7 @@ const PrivateLayout = () => {
             <Route exact path={ROUTE.WALLETS} component={WalletPage} />
             <Route path={ROUTE.NETWORKS} component={NetworkPage} />
             <Route path={ROUTE.SETTINGS} component={SettingsPages} />
+            <Route path="*" exact={true} component={Notfound} />
           </Switch>
         </div>
       </Layout>

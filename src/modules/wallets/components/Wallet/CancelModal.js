@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Form } from "antd";
 import "./styles.scss";
-import { FormattedMessage } from "react-intl";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const CancelModal = ({ setCancel, onCancel }) => {
@@ -9,6 +8,7 @@ const CancelModal = ({ setCancel, onCancel }) => {
 
   const onFinish = () => {
     onCancel();
+    formCancel.setFieldsValue({ code: "" });
   };
   const onClickCancel = () => {
     setCancel(false);

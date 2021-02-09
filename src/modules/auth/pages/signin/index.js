@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { FormattedMessage, injectIntl } from "react-intl";
@@ -8,12 +8,20 @@ import { get } from "lodash";
 import { ROUTE } from "commons/constants";
 import * as actions from "modules/auth/redux/actions";
 import "./styles.scss";
+import ModalConfirm from "commons/components/ModalConfirm";
+import VerifyModal from "modules/wallets/components/Wallet/VerifyModal";
 
 const SignInPage = ({ history, location }) => {
   const dispatch = useDispatch();
+  const [objCus, setObjCus] = useState();
   const onFinish = (values) => {
     dispatch(
       actions.postLogin(values, (data) => {
+        if (!data.LastName) {
+          setObjCus(data);
+          setShow(true);
+          return;
+        }
         if (get(location, "state.from")) {
           const pathName = get(location, "state.from.pathname");
           const search = get(location, "state.from.search");
@@ -26,7 +34,11 @@ const SignInPage = ({ history, location }) => {
     );
   };
 
-  useEffect(() => {}, []);
+  const [isShow, setShow] = useState(false);
+
+  const onVerify = (code) => {
+    dispatch(actions.verifyLogin({ code, id: objCus.id }));
+  };
 
   return (
     <div className="sign-in-container">
@@ -105,6 +117,12 @@ const SignInPage = ({ history, location }) => {
           </Form>
         </Card>
       </div>
+      <ModalConfirm
+        visible={isShow}
+        setVisible={setShow}
+        title={`Verify Authenticator`}
+        MyForm={<VerifyModal onVerify={onVerify}></VerifyModal>}
+      />
     </div>
   );
 };

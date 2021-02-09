@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Form, InputNumber, Select } from "antd";
-import { useDispatch } from "react-redux";
 import "./styles.scss";
-import { get } from "lodash";
 import { FormattedMessage } from "react-intl";
 import { CheckOutlined } from "@ant-design/icons";
 import * as numeral from "numeral";
@@ -14,6 +12,7 @@ const SwapModal = ({ wallet, onSwap }) => {
     let amount = numeral(values.amount).value();
     if (+amount < 0) return;
     onSwap(wallet.unit, amount, values.toCurrency);
+    formSwap.setFieldsValue({ amount: "0", toCurrency: "" });
   };
   useEffect(() => {
     formSwap.setFieldsValue({ amount: "0", toCurrency: "" });

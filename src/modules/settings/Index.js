@@ -1,3 +1,4 @@
-const { default: SettingsPages } = require("./pages/Index");
+import SettingsPages from "./pages";
+import SettingSaga from "./redux/sagas";
 
-export { SettingsPages };
+export { SettingsPages, SettingSaga };

@@ -12,7 +12,7 @@ import "./styles.scss";
 const SettingsPages = () => {
   const { path, url } = useRouteMatch();
   const { userInfo } = useSelector((state) => state.auth);
-  // console.log(userInfo);
+
   return (
     <div className="settings-main">
       <div className="settings-header">
@@ -71,7 +71,7 @@ const SettingsPages = () => {
               <Authentication />
             </Route>
             <Route exact path={`${path}${ROUTE.SETTING_SECURITY}`}>
-              <Security />
+              <Security userInfo={userInfo} />
             </Route>
           </Switch>
         </Col>

@@ -1,23 +1,49 @@
-import { Button, Input } from "antd";
+import { Button } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  generateQR,
+  activeAuthenticator,
+} from "modules/settings/redux/actions";
+import ModalConfirm from "commons/components/ModalConfirm";
+import VerifyModal from "modules/wallets/components/Wallet/VerifyModal";
 
-import { SelectFormPhone } from "./Select/Select";
+const Authy = ({ userProfile }) => {
+  const dispatch = useDispatch();
+  const [isShow, setShow] = useState(false);
+  const onGenerate = () => {
+    dispatch(generateQR());
+  };
 
-const Authy = ({ title }) => {
+  const onVerify = (code) => {
+    dispatch(
+      activeAuthenticator(code, () => {
+        setShow(false);
+      })
+    );
+  };
+
   return (
     <div className="authy">
-      <div className="select-region input-authy">
-        <div className="title">{title}</div>
-        <SelectFormPhone />
-      </div>
-      <div className="type-phone input-authy">
-        <div className="title">{title}</div>
-        <Input />
-      </div>
+      <img src={userProfile?.imageAuthy} />
       <div className="button-save input-authy">
-        <div className="title">{title}</div>
-        <Button>Save now!</Button>
+        <Button onClick={onGenerate}>Generate new QR!</Button>
       </div>
+      {!userProfile?.is_authy &&
+      userProfile.authy &&
+      userProfile.authy.status === 0 ? (
+        <div className="button-save input-authy">
+          <Button onClick={() => setShow(true)}>🗝 Active </Button>
+        </div>
+      ) : (
+        ""
+      )}
+      <ModalConfirm
+        visible={isShow}
+        setVisible={setShow}
+        title={`Verify Authenticator`}
+        MyForm={<VerifyModal onVerify={onVerify}></VerifyModal>}
+      />
     </div>
   );
 };

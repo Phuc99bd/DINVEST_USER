@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Form, InputNumber, Input } from "antd";
 import "./styles.scss";
-import { get } from "lodash";
 import SelectOption from "commons/components/SelectOption/SelectOption";
 import { FormattedMessage } from "react-intl";
 import { CheckOutlined } from "@ant-design/icons";
@@ -16,10 +15,15 @@ const WithdrawMoal = ({ wallet, onWithdraw }) => {
   const onFinish = (values) => {
     let amount = numeral(values.amount).value();
     onWithdraw(wallet.unit, values.toAddress, amount);
+    cleanForm();
   };
-  useEffect(() => {
+
+  const cleanForm = () => {
     formWithdraw.setFieldsValue({ amount: "0" });
     formWithdraw.setFieldsValue({ wallet_address: "" });
+  };
+  useEffect(() => {
+    cleanForm();
   }, []);
 
   return (

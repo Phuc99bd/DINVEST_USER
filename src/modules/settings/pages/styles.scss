@@ -225,6 +225,7 @@
             border: none;
             width: 45%;
             color: white;
+            margin: 0 !important;
           }
           .ant-btn.authy {
             background-color: $main-bg-input;
@@ -233,7 +234,12 @@
         .authy {
           margin: auto;
           width: 40%;
+          margin-top: 20px;
+          img {
+            min-width: 100%;
+          }
           .input-authy {
+            margin-top: 10px;
             width: 100%;
             .ant-btn,
             .ant-input {
@@ -289,6 +295,10 @@
           .input-email {
             .button-change {
               width: 20% !important;
+              color: white;
+            }
+            .input-change {
+              color: white !important;
             }
           }
         }

@@ -99,7 +99,7 @@ const DrawerHistory = ({
             Revenue:{" "}
             {transactions?.data
               ?.reduce((a, b) => {
-                return b.action == "IN" ? a + b.amount : a - b.amount;
+                return b.action === "IN" ? a + b.amount : a - b.amount;
               }, 0)
               .toFixed(2)}
           </p>{" "}
@@ -108,7 +108,7 @@ const DrawerHistory = ({
       dataIndex: "amount",
       key: "amount",
       render: (text, row) => {
-        return `${row.action == "IN" ? "+" : "-"} ${text.toFixed(2)}`;
+        return `${row.action === "IN" ? "+" : "-"} ${text.toFixed(2)}`;
       },
     },
     {

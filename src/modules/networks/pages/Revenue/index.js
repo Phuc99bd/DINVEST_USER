@@ -1,11 +1,13 @@
 import { Card, Col, Table } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import moment from "moment";
+import { getRevenue } from "modules/networks/redux/actions";
 
 const Revenue = () => {
   const [dataSource, setData] = useState({ data: [] });
   let [page, setPageIndex] = useState(1);
+  let [days, setDays] = useState(7);
   let pageSize = 10;
 
   const customPagination = {
@@ -14,20 +16,31 @@ const Revenue = () => {
     size: dataSource?.lastPage || 1,
     total: dataSource?.total,
     onChange: (page) => {
-      // dispatch(
-      //   actions.getCommission({ page }, (data) => {
-      //     setData(data);
-      //   })
-      // );
+      dispatch(
+        getRevenue({ page, pageSize, days }, (data) => {
+          setData(data);
+        })
+      );
       setPageIndex(page);
     },
   };
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      getRevenue({ days: days, page, pageSize }, (data) => {
+        setData(data);
+      })
+    );
+  }, [days]);
   const columns = [
     {
       title: "Amount",
-      dataIndex: "value",
-      key: "value",
+      dataIndex: "amount",
+      key: "amount",
+      render: (text) => {
+        return <p className="modify-title"> + ${text.toFixed(2)} USJ </p>;
+      },
     },
     {
       title: "Type",
@@ -41,22 +54,27 @@ const Revenue = () => {
       render: (text) => moment(text).format("YYYY-MM-DD HH:mm:ss"),
     },
   ];
-  const onChangeOption = (value) => {};
   return (
     <Col md={24} xs={24}>
       <div className="revenue-main">
         <div className="revenue-header">
-          <button class="revenue-option" onClick={() => onChangeOption(7)}>
+          <button
+            class={`revenue-option ${days === 7 && "active"}`}
+            onClick={() => setDays(7)}
+          >
             7 days
           </button>
-          <button class="revenue-option" onClick={() => onChangeOption(30)}>
+          <button
+            class={`revenue-option ${days === 30 && "active"}`}
+            onClick={() => setDays(30)}
+          >
             30 days
           </button>
         </div>
         <div className="revenue-body">
           <Card title="Revenue" className="networks-commission">
             <Table
-              dataSource={dataSource}
+              dataSource={dataSource.data}
               columns={columns}
               pagination={customPagination}
             />

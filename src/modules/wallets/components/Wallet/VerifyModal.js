@@ -9,6 +9,7 @@ const VerifyModal = ({ onVerify }) => {
 
   const onFinish = (values) => {
     onVerify(values.code);
+    formVerify.setFieldsValue({ code: "" });
   };
   useEffect(() => {
     formVerify.setFieldsValue({ code: "" });

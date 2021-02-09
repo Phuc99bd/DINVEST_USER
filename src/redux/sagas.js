@@ -5,6 +5,7 @@ import { DashboardSaga } from "modules/home";
 import { WalletSaga } from "modules/wallets";
 import { InvestSaga } from "modules/invest";
 import { NetworkSaga } from "modules/networks";
+import { SettingSaga } from "modules/settings";
 
 export default function* rootSaga() {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     WalletSaga(),
     InvestSaga(),
     NetworkSaga(),
+    SettingSaga(),
   ]);
 }

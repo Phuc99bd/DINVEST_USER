@@ -12,6 +12,7 @@ const OneItem = ({
   is_current,
   is_hidden,
   onClickShow,
+  investmentCurrent,
 }) => {
   return (
     <div className={classname}>
@@ -46,7 +47,7 @@ const OneItem = ({
           ) : (
             <>
               <ArrowUpOutlined />
-              <span>Upgrade</span>
+              <span>{investmentCurrent ? "Upgrade" : "Buy"}</span>
             </>
           )}
         </div>

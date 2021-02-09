@@ -61,3 +61,8 @@ export const updateAuthVerify = (payload, callbackSuccess) => ({
   payload,
   callbackSuccess,
 });
+
+export const verifyLogin = (payload) => ({
+  type: types.VERIFY_LOGIN,
+  payload,
+});

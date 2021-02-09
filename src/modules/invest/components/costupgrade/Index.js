@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import OneItem from "./OneItem";
 
 const renderItems = ({
@@ -21,9 +21,10 @@ const renderItems = ({
         position={val.title}
         cost={val.price}
         revenue={(val.price * val.max_revenue) / 100}
-        is_current={investmentCurrent?.position == val.position}
+        is_current={investmentCurrent?.position === val.position}
         is_hidden={investmentCurrent?.position >= val.position}
         onClickShow={() => onClickShow(val)}
+        investmentCurrent={investmentCurrent}
       />
     );
   });

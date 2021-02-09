@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Button, Form, InputNumber, Input } from "antd";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { Button, Form, InputNumber } from "antd";
 import "./styles.scss";
-import { get } from "lodash";
-import { toast } from "react-toastify";
 import { FormattedMessage } from "react-intl";
 import { CheckOutlined } from "@ant-design/icons";
 import * as numeral from "numeral";
@@ -15,10 +12,15 @@ const ExchangeModal = ({ wallet, onExchange }) => {
     let amount = numeral(values.amount).value();
     if (+amount < 0) return;
     onExchange(amount);
+    cleanForm();
   };
-  useEffect(() => {
+
+  const cleanForm = () => {
     formWithdraw.setFieldsValue({ amount: "0" });
     formWithdraw.setFieldsValue({ wallet_address: "" });
+  };
+  useEffect(() => {
+    cleanForm();
   }, []);
 
   return (

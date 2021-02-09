@@ -68,6 +68,7 @@ const WalletPage = () => {
       actions.onVerify({ token, id: transaction?.id }, () => {
         dispatch(getProfile({}, () => {}));
         setVerify(false);
+        setRefesh(!is_refresh);
       })
     );
   };

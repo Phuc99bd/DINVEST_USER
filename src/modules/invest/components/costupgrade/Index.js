@@ -24,6 +24,7 @@ const renderItems = ({
         is_current={investmentCurrent?.position === val.position}
         is_hidden={investmentCurrent?.position >= val.position}
         onClickShow={() => onClickShow(val)}
+        investmentCurrent={investmentCurrent}
       />
     );
   });

@@ -93,7 +93,7 @@ const WalletPage = () => {
   return (
     <>
       <Row>
-        {userInfo.wallet.map((e) => {
+        {userInfo?.wallet?.map((e) => {
           return (
             <Col md={12} xs={24} className="wallet-network" key={e.id}>
               <Wallet

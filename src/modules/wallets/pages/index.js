@@ -25,6 +25,7 @@ const WalletPage = () => {
     [is_refresh, setRefesh] = useState(false);
 
   const dispatch = useDispatch();
+  const dispatch2 = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
   const [wallet, setWallet] = useState(null);
